@@ -67,13 +67,17 @@ Below is a link to download trained models to apply it on your dataset
 ### Golden Lab webpage
 - [Sam Golden Lab UW](https://goldenneurolab.com/) 🧪🧫🐁
 
-
-
 ## License 📃
 This project is licensed under the GNU Lesser General Public License v3.0. Note that the software is provided "as is", without warranty of any kind, express or implied. If you use the code or data, please cite us :)
 
 ## References 📜
 
-
-
 [![Foo](https://github.com/sgoldenlab/simba/blob/master/images/cos_center_logo_small.original.png)](https://osf.io/d69jt/) [![Foo](https://github.com/sgoldenlab/simba/blob/master/images/twitter.png)](https://twitter.com/GoldenNeuron?s=20)
+
+## Contributors 🤼
+- [Simon Nilsson](https://github.com/sronilsson)
+- [Jia Jie Choong](https://github.com/inoejj)
+- [Sophia Hwang](https://github.com/sophihwang26)
+- [Xiaoyu Tong](https://github.com/Xiaoyu-Tong)
+
+
