@@ -30,6 +30,8 @@ Select Shape --> Define Shape --> Draw Shape --> Analyze ROI --> Visualize ROI
 
 3. Click on `Draw` to start drawing ROI. Read the instructions carefully and follow through the steps.
 
+![](/images/roigif.gif)
+
 4. If you want to apply the ROI to all the video in your project, click `Apply to all` from the same row of the video that you just clicked `Draw`.
 
 5. If you want to redraw the ROI, click `Reset`, and that will reset the ROI you drew. Click on `Draw` again to redraw your ROI.
