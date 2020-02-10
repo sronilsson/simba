@@ -35,9 +35,12 @@ Select Shape --> Define Shape --> Draw Shape --> Analyze ROI --> Visualize ROI
 5. If you want to redraw the ROI, click `Reset`, and that will reset the ROI you drew. Click on `Draw` again to redraw your ROI.
 
 ## Step 3: Load ROI (Optional)
-If you have defined your ROI before and wished to load them.
 
 1. Load your `project_config.ini` under the **[Load Project]** tab.
 
 2. Under **[ROI]** tab --> **Load ROI**, click on `Load defined ROI table`.
+
+## Step 4: Analyze ROI
+
+1. Once the ROI has been defined in every video, click on `Analyze ROI data`.
 
