@@ -22,23 +22,25 @@ In this table, enter a name for each of your shapes in the Rectangle Name, Circl
 
 5. After clicking on the `Set Shape Definitions` button, the following table will pop up.
 
-
 Each video in the project has three buttons associated with it: **Draw, Reset, and apply to all**. The functions of each button will be outlined below. In brief, the *Draw* button allows you to start to draw your defined shapes on the specific video. The *Reset* button delets any drawing made on the specific video and allows you to restart the drawing from scratch on the specific video by next clicking on the *Draw* button. The *Apply to all* buttons takes the drawing made on the specific video and replicates it on all other videos in the project. 
 
 >*Note*: If a drawing has been made on a specific video, or applied to all videos by clicking on the *Apply to all* button, then the drawn shapes for a specific video can be moved by clicking on the *Draw* button.
 
-6. To begin draw your shapes, click on the Draw button for the first Video in the table. Once clicked, a window will first pop up that contains instructions for how to draw your shapes. The instructions for drawing rectangles, circles, and polygons are slightly different. Any defined rectangles will be processed first. The instructions for drawing rectangles will look like this:
+6. To begin draw your shapes, click on the Draw button for the first Video in the table. Once clicked, a window will first pop up that contains instructions for how to draw your shapes. The instructions for drawing rectangles, circles, and polygons are slightly different. Any defined rectangles will be processed first. The instructions for drawing rectangles will look like this (left), and drawing rectangles should look kind of like this (right):
 
-![](https://github.com/sgoldenlab/simba/blob/master/images/ROI_rectangle.JPG)
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_rectangle.JPG" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/Rectangle_draw.gif" width="425"/>
 
 In this example, to begin to draw the rectangle named "TopLeft" on Video1, press on `Esc`. When `Esc` is pressed, the first frame of Video1 is displayed. Click and hold the left mouse button at the top left corner of rectangle "TopLeft" and drag the mouse to the bottom right corner of the rectangle
 
-
 If you're unhappy with your rectangle, start to draw the rectangle again by holding the left mouse button at the top left corner of your new revised recangle. When you are happy with your rectangle, press `Esc` twice to save your rectangle and move to your next shape. Once all the rectangles have been drawn, any defined circles will be processed. The instructions for drawing circles will look like this:
 
-![](https://github.com/sgoldenlab/simba/blob/master/images/ROI_circles.JPG)
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_circles.JPG" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/Circle_draw.gif" width="425"/>
 
 In this example, to begin to draw the circle named "Cage" on Video1, press on `Esc`. When `Esc` is pressed, the first frame of Video1 is displayed. If you have previously drawn any rectangles, then these rectangles will also be displayed on the frame. Begin by double left clicking on the image where you would like the center of the circle to be. Next double left click on the image where you would like the outer bound of the circle to be. If you are unhappy with the center of the circle, double left mouse click on the center of the circle, and double left click again at the new circle center location. If you are unhappy with the outer bounds or the diameter of the circle, double left mouse click on outer bounds of the circle, and double left click again at the new circle outer bounds location. When you are happy with your circle, press `Esc` to save your circle and move to your next shape. Once all the circles have been drawn, any defined polygons will be processed. The instructions for drawing circles will look like this:
+
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_polygons.JPG" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/Polygon_draw.gif" width="425"/>
+
+
 
 ![](https://github.com/sgoldenlab/simba/blob/master/images/ROI_polygons.JPG)
 
