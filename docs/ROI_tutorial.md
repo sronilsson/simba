@@ -70,7 +70,10 @@ Once complete, a statement will be printed in the main SimBA terminal window not
 
 # Part 3. Generating features for ROI data. 
 
-This will 
+With the ROI information, we can generate several further features that might be useful for predicting behaviors, or be useful within other third-party applications. This includes features like:
+
+* In each frame, calculate if the animal is located within or outside the ROIs
+* In each frame in the video, calculate the metric distance 
 
 
 
