@@ -36,116 +36,41 @@ If you're unhappy with your rectangle, start to draw the rectangle again by hold
 
 <img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_circles.JPG" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/Circle_draw.gif" width="425"/>
 
-In this example, to begin to draw the circle named "Cage" on Video1, press on `Esc`. When `Esc` is pressed, the first frame of Video1 is displayed. If you have previously drawn any rectangles, then these rectangles will also be displayed on the frame. Begin by double left clicking on the image where you would like the center of the circle to be. Next double left click on the image where you would like the outer bound of the circle to be. If you are unhappy with the center of the circle, double left mouse click on the center of the circle, and double left click again at the new circle center location. If you are unhappy with the outer bounds or the diameter of the circle, double left mouse click on outer bounds of the circle, and double left click again at the new circle outer bounds location. When you are happy with your circle, press `Esc` to save your circle and move to your next shape. Once all the circles have been drawn, any defined polygons will be processed. The instructions for drawing circles will look like this:
+In this example, to begin to draw the circle named "Cage" on Video1, press on `Esc`. When `Esc` is pressed, the first frame of Video1 is displayed. If you have previously drawn any rectangles, then these rectangles will also be displayed on the frame. Begin by double left clicking on the image where you would like the center of the circle to be. Next double left click on the image where you would like the outer bound of the circle to be. If you are unhappy with the center of the circle, double left mouse click on the center of the circle, and double left click again at the new circle center location. If you are unhappy with the outer bounds or the diameter of the circle, double left mouse click on outer bounds of the circle, and double left click again at the new circle outer bounds location. When you are happy with your circle, press `Esc` to save your circle and move to your next shape. Once all the circles have been drawn, any defined polygons will be processed. The instructions for drawing polygons will look like this:
 
 <img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_polygons.JPG" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/Polygon_draw.gif" width="425"/>
 
+In this example, to begin to draw the polygon named "Polygon1" on Video1, press on `Esc`. When `Esc` is pressed, the first frame of Video1 is displayed. If you have previously drawn any rectangles or circles, then these shapes will also be displayed on the frame. Click on at least three different locations in the image that defines the bounds of "Polygon1". SimBA does currently not allow re-definitions of the bounds locations of the polygon once they have been specified. If you are unhappy with your drawn polygon, you can however move the entire polygon in a later step (see below). When you have finished your polygon, press `Esc` to save your polygon and move to your next shape (or to finish if all the shapes have been drawn).
 
-
-![](https://github.com/sgoldenlab/simba/blob/master/images/ROI_polygons.JPG)
-
-In this example, to begin to draw the polygon named "Polygon1" on Video1, press on `Esc`. When `Esc` is pressed, the first frame of Video1 is displayed. If you have previously drawn any rectangles or circles, then these shapes will also be displayed on the frame. Click on at least three different locations in the image that defines the bounds of "Polygon1". SimBA does currently not allow re-definitions of the bounds locations of the polygon once they have been specified. If you are unhappy with your drawn polygon, you can however move the entire polygon in a later step (see below). When you have finished your polygon, press `Esc` to save your polygon and move to your next shape (or to finish if all the shapes have been drawn). 
 
 6. If you have finished the drawing for Video1, and you are not entirely happy with the drawings, you can either: (i) click on the `Reset` buttons next to Video1. This will delete the drawings you have made, and you can now again click on `Draw` button next to Video1 to restart Step 5. Alternatively, you can click on `Draw` again **without** first clicking on `Reset`. This will allow you to move the shapes for Video1 that you have defined.When you click on `Draw` again **without** first clicking on `Reset` after you have defined your shapes, the following instruction window will pop open:
 
-![](https://github.com/sgoldenlab/simba/blob/master/images/ROI_move.JPG)
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_move.JPG" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/Move_shapes.gif" width="425"/>
 
 To start moving the shapes you have drawm, first click on the centroid circle belonging to the shape that you wish to move. This will cause the shape to disapear. Next, double left click on the new centroid location of the shape you are moving. This will display the shape in its new location. When happy, press on on `Esc` to save the new shape locations.  
 
 7. Once all the shapes have been drawn on a single video there are two possible routes to getting them drawn on all of the videos in the project. One, and probably more time-consuming alternative, is to click on the `Draw` buttons associated with each video, and replicate **Step 5** for all of the videos in you project. Another, faster and more standardized alternative, is to replicate shapes drawn on Video1 in all of the videos of the project, and then move/nudge them in each of the videos. To replicate ROI shapes drawn for Video1 to all of the videos in the project, click on the `Apply to all` button next to Video1. Once done, click on `Draw` for Video2. This will first display the Instruction window for how to move shapes - press `Esc` to proceed. This displays the first frame for Video2. Move the shapes so that they are in the correct locations (as described in Step 6 above), and press `Esc` to save the locations of the shapes.
 
-Repeat this step for all of the videos in the project. Once complete, close the **ROI Table** window and navigate back to the **ROI** tab in the **Load project** window. 
+Repeat this step for all of the videos in the project. Once complete, close the **ROI Table** window, and navigate back to the **ROI** tab in the **Load project** window.
 
 # Part 2. Analyzing ROI data.
 
-1. All ROIs are now defined and the data can now be analyzed. Note: if you at any point want to look at, or modify, the defined ROI shapes for each of the videos, click on the `Load defined ROI table` button in the **ROI** tab under the `Load project` menu. If you'd like to delete all the shapes you have drawn for all of the videos and start afresh with new shapes, go back to Part 1, Step 3. 
+This process will produce two CSV files: one file that contains the number entries into each ROI shape for each video, and a second file that contains the time spent in each zone for each video. 
 
-2. To analyze your ROI data, click on `Analyze ROI data` in the Analyze ROI submenu. This process will produce two CSV files: one file that contains the number entries into each ROI shape for each video, and a second file that contains the time spent in each zone for each video. When clicking on `Analyze ROI data` the ROI tab and the following menu will pop open:
+1. All ROIs are now defined and the data can now be analyzed. Note: if you at any point want to look at, or modify, the defined ROI shapes for each of the videos, click on the `Load defined ROI table` button in the **ROI** tab under the `Load project` menu. If you'd like to delete all the shapes you have drawn for all of the videos and start afresh with new shapes, go back to Part 1, Step 3.
 
+2. To analyze your ROI data, click on `Analyze ROI data` in the Analyze ROI submenu. The following menu will pop open:
 
-ne or two body parts 
+![](https://github.com/sgoldenlab/simba/blob/master/images/ROI_analyze1.jpg)
 
+Here, select the number of animals you wish to analyze the data for. First select if wish to analyze the entry and time ROI data for a single animal or two animals, and then click confirm. A second submenu will appear below named `Choose bodyparts`. This menu will contain as many dropdown menus as the number of animals selected in the  `Select number of animals` menu. Each of these drop-down menus will contain the body-parts used to track the animals. Select the body-parts you wish to use to calculate the ROI entry and time data, and click run. 
 
+Once complete, a statement will be printed in the main SimBA terminal window noting that the process is complete. The data can be found in the `Project_folder/logs` directory. 
 
 
+# Part 3. Generating features for ROI data. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Select Shape --> Define Shape --> Draw Shape --> Analyze ROI --> Visualize ROI
-
-## Step 1: Select Shape for ROI
-
-1. Load your `project_config.ini` under the **[Load Project]** tab.
-
-2. Navigate to the **[ROI]** tab --> `Define ROI`, enter the number of shapes for the region of interest in your video.
-
-
-
-
-
-4. Enter the name for the shapes. You can set a fixed width and height for your rectangle in the given entry boxes. If it was left to be 0, rectangle can be drawn by free hand. This is the same case for circle.
-
-![](/images/roidef.PNG)
-
-5. Once all the information is filled, click on `Set Shape Definitions`, and the **ROI Table** will pop up.
-
-## Step 2: Draw Shape
-
-1. The **ROI Table** will be populated based on the number of videos in your project folder.
-
-2. In this case, I have one video in my project folder and the **ROI Table** will look like this.
-
-![](/images/roitable.PNG)
-
-3. Click on `Draw` to start drawing ROI. Read the instructions carefully and follow through the steps.
-
-![](/images/roigif.gif)
-
-4. If you want to apply the ROI to all the video in your project, click `Apply to all` from the same row of the video that you just clicked `Draw`.
-
-5. If you want to redraw the ROI, click `Reset`, and that will reset the ROI you drew. Click on `Draw` again to redraw your ROI.
-
-## Step 3: Load ROI (Optional)
-
-1. Load your `project_config.ini` under the **[Load Project]** tab.
-
-2. Under **[ROI]** tab --> **Load ROI**, click on `Load defined ROI table`.
-
-## Step 4: Analyze ROI
-
-1. Once the ROI has been defined in every video, click on `Analyze ROI data`.
-
-
-
-## Step 5: Visualize ROI
+This will 
 
 
 
