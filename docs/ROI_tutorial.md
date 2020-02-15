@@ -70,10 +70,34 @@ Once complete, a statement will be printed in the main SimBA terminal window not
 
 # Part 3. Generating features for ROI data. 
 
-With the ROI information, we can generate several further features that might be useful for predicting behaviors, or be useful within other third-party applications. This includes features like:
+With the ROI information, we can generate several further features that might be useful for predicting behaviors, or be useful within other third-party applications. For each frame of the video, the following features are added to the battery of features:
 
-* In each frame, calculate if the animal is located within or outside the ROIs
-* In each frame in the video, calculate the metric distance 
+* Boolean (TRUE or FALSE) value noting if the animal is located within or outside each of the ROIs
+* Calculate the metric distance between the amimal and the center of each ROIs
+* The cumultitive time spent in each of the ROIs
+* The percentage of the total session time spent in each of the ROIs
+
+If the users are using the the body parts suggested (Including Nose, Left ear, and right ear), SimBA can also calculate if the animal is directing towards each of the ROIs:
+
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/Directionality_ROI.PNG" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_directionality.gif" width="425"/>
+
+Using these directionality measure, we can calculate several further potentially informative features for each frame for the machine learning model:
+
+* Boolean (TRUE or FALSE) value noting if the animal is directing towards the center each of the ROIs
+* The cumultitive time spent directing towards each of the ROIs 
+* The percentage of the total session time spent directing towards each of the ROIs
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
