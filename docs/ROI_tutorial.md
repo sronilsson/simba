@@ -1,7 +1,14 @@
-The SimBA region of intrest (ROI) interface allows users to define and draw regions of interest (ROIs) on videos. The ROI data can be used to visualize and calculate basic descriptive statistics based on animals movements and locations, and/or used to build potentially valuable additional features for random forest predictive classifiers.
-
+The SimBA region of intrest (ROI) interface allows users to define and draw regions of interest (ROIs) on videos. The ROI data can be used to visualize and calculate basic descriptive statistics based on animals movements and locations. The ROI data can also be used to build potentially valuable additional features for random forest predictive classifiers. 
 
 # Before analyzing ROIs in SimBA
+
+In SimBA, there are two possible routes to analyzing ROI data. The **first** route is  designed for scenarios when you are *only* intrested in analyzing and/or visualizing the number of entries and time spent within the different ROIs, and you *will not* use the ROI data to create features for building random forest classifiers. The **second** route is designed for scenarious when you are intrested in using the ROI data to create features, as well as intrested in analyzing and/or visualizing the number of entries and time spent within the different ROIs. 
+
+>**A short explanation on what we mean by using ROI data as features for random forest classifiers** When the user specifies different ROIs in SimBA, then we can calculate several metrics that goes beyond the coordinates of the different bosy-parts extracted from pose-estimation and that now also includes the coordinates of the ROIs. For example - for each frame of the video - we can now calculate the distance between the body-parts and the ROIs, if the animal is inside or outside the ROIs, and if the animal is directing towards the ROIs. These measures can also be used to calculate several further features such as the percentage of the session, up to and including the any frame, the animal has spent within a specific ROI. These and other ROI-based features could be useful for classifying behaviors in certain scenarious. **CAUTION**: If such ROI based features are irrelevant for the behaviour beying classified, then they should not be calculated and they should not be included in the machine model generation.
+
+
+
+
 Before defining and analyzing ROI data in SimBA, the data needs to be processed through up to and including [Part 2 - Step 4](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Scenario1.md#step-4-outlier-correction) outlined in [Scenario1](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Scenario1.md). Specifically, begin by (i) [Importing your videos to the project](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Scenario1.md#step-2-import-videos-into-project-folder), (ii) [Importing the tracking data to your project](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Scenario1.md#step-3-import-dlc-tracking-data), (iii) [Set the video parameters](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Scenario1.md#step-3-set-video-parameters), and (iv) [Correct outliers](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Scenario1.md#step-4-outlier-correction). 
 
 # Part 1. Defining ROIs in SimBA
