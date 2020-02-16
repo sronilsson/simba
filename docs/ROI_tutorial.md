@@ -67,8 +67,7 @@ Here, select the number of animals you wish to analyze the data for. First selec
 
 Once complete, a statement will be printed in the main SimBA terminal window noting that the process is complete. The data can be found in the `Project_folder/logs` directory. 
 
-
-# Part 3. Generating features for ROI data. 
+# Part 3. Generating features from ROI data. 
 
 With the ROI information, we can generate several further features that might be useful for predicting behaviors, or be useful within other third-party applications. For each frame of the video, the following features are added to the battery of features:
 
@@ -86,6 +85,13 @@ Using these directionality measure, we can calculate several further potentially
 * Boolean (TRUE or FALSE) value noting if the animal is directing towards the center each of the ROIs
 * The cumultitive time spent directing towards each of the ROIs 
 * The percentage of the total session time spent directing towards each of the ROIs
+
+
+# Part 4. Visualizing ROI data 
+
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_visualization_1.gif" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_visualization_2.gif" width="425"/>
+
+
 
 
 
