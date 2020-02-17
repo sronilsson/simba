@@ -36,4 +36,4 @@
 
 - `Minimum behavior bout length (ms)`:
 
-10. Click `Validate` to validate your model.
+10. Click `Validate` to validate your model. **Note that this step will take a long time as it will generate a lot of frames.**
