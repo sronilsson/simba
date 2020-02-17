@@ -75,7 +75,7 @@ This is a tool to crop videos.
 
 ## Multi-crop videos
 
-This is a tool to used to multi-crop videos. For example, if you recorded four different environments with a single camera, you can use this tool to split single recordings into 4 different videos. This tool multi-crops all videos in a folder that is defined by the user. 
+This is a tool to used to multi-crop videos. For example, if you recorded four different environments with a single camera, you can use this tool to split single recordings into 4 different videos. This tool operates on all videos in a folder that is defined by the user. 
 
 1. First, click on Multi-crop and the following menu will pop-open:
 
