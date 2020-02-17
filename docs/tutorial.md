@@ -375,7 +375,7 @@ Access this menu through the `Load project` menu and the `Run machine model` tab
 ### Step 10: Visualization
 These steps generate visualizations of features and machine learning classification results. This includes images and videos of the animals with prediction overlays, gantt plots, line plots, paths plots and data plots. In this step the different frames can also be merged into video mp4 format. 
 
-<img src="https://github.com/sgoldenlab/simba/blob/master/images/plotsklearn.PNG" width="1246" height="380" />
+![](/images/visualization.PNG)
 
 1. Under the **Sklearn visualization** heading, click on `Visualize classification results`.
 This step grabs the frames of the videos in the project, and draws circles at the location of the tracked body parts, the convex hull of the animal, and prints the behavioral predictions on top of the frame. For an example, click [here](https://www.youtube.com/watch?v=7AVUWz71rG4&t=519s).
