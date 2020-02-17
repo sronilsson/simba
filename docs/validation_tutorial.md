@@ -32,8 +32,8 @@
 
 9. Once the threshold is determined, enter the threshold into the `Discrimination threshold` entry box and the desire minimum behavior bouth length into the `Minimum behavior bout lenght(ms)` entrybox.
 
-- `Discrimination threshold`:
+- `Discrimination threshold`: The level of probability required to define that the frame belongs to the target class.
 
-- `Minimum behavior bout length (ms)`:
+- `Minimum behavior bout length (ms)`: The minimum length of a classified behavioral bout.
 
 10. Click `Validate` to validate your model. **Note that this step will take a long time as it will generate a lot of frames.**
