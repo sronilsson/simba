@@ -117,7 +117,9 @@ You can now generate visualizations of the ROI data for each of the videos in yo
 
 <img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_visualization_1.gif" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/ROI_visualization_2.gif" width="425"/>
 
-Clicking on `Visualize ROI tracking` will generate visualizations for all of the files located in the `project_folder/csv/features_extracted` folder. The process will generate one frame for each of the frame in the video. For example, if you are generating visualizations for Video1, then the output frames will be located in the `project_folder/frames/output/ROI_analysis/Video1` subfolder. 
+Clicking on `Visualize ROI tracking` will generate visualizations for all of the files located in the `project_folder/csv/features_extracted` folder. The process will generate one frame for each of the frame in the video. For example, if you are generating visualizations for Video1, then the output frames will be located in the `project_folder/frames/output/ROI_analysis/Video1` subfolder. To combine these frames to a video or gif, please see the relevant Instructions in the [SimBA tools](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_tools.md#how-to-use-tools-to-process-videos-in-simba) menu.
+
+
 
 
 
