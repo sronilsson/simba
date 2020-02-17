@@ -1,8 +1,8 @@
 # User-defined pose-configurations in SimBA
 
-We strongly recommend using SimBA with a [16-body-part, 2 animal, pose-configuration setting](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling). SimBa also comes with several other other pre-generates pose-configuration settings which can be selected in the [Create Project](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#step-1-generate-project-config) menu. To expand the application of SimBA, users can also define their own pose-configuration settings any number of body-parts. 
+We strongly recommend using SimBA with a [16-body-part, 2 animal, pose-configuration setting](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling). Besides this body-part configuration, SimBa also comes with several other other pre-generated pose-configuration settings which can be selected in the [Create Project](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#step-1-generate-project-config) menu.
 
-
+Furthermore, users can also define their own pose-configuration settings and use any number of body-part configuration in SimBA. **CAUTION**: When users create projects with user-defined body part configurations, SimBA calculates fewer features for the machine models and this may negatively affect the prediction performance. Thus, if users **can** use the suggested [16-body-part, 2 animal, pose-configuration setting](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling) we recommend doing so. 
 
 # Create a new user-defined pose-configuration
 
