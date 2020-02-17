@@ -14,7 +14,7 @@
 
 5. Click on `Run Model`.
 
-6. Once, it is completed, it should print *Predictions generated.*, now you can click on `Generate plot`. A graph window and a frame window will pop up.
+6. Once, it is completed, it should print *"Predictions generated."*, now you can click on `Generate plot`. A graph window and a frame window will pop up.
 
 - `Graph window`: model prediction probability versus frame numbers will be plot. The graph is interactive, click on the graph and the frame window will display the selected frames.
 
