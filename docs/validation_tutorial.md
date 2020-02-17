@@ -28,6 +28,8 @@
 
 8. Once it jumps to the desired frame, you can navigate through the frames to determine if the behavior is present. This step is to find the optimal threshold to validate your model.
 
+![](/images/validategraph.gif)
+
 9. Once the threshold is determined, enter the threshold into the `Discrimination threshold` entry box and the desire minimum behavior bouth length into the `Minimum behavior bout lenght(ms)` entrybox.
 
 - `Discrimination threshold`:
