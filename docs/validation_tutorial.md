@@ -2,6 +2,8 @@
 
 1. Click on `File` --> `Load project`, and the following window will pop up.
 
+![](/images/loadprojectini.PNG)
+
 2. Click `Browse File` and select the *project_config.ini* file and click `Load Project`.
 
 3. Under **[Run machine model]** tab --> **validate Model on Single Video**, select your features file (.csv). It should be located in `project_folder/csv/features_extracted`.
