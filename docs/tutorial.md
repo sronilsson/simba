@@ -372,7 +372,7 @@ Access this menu through the `Load project` menu and the `Run machine model` tab
 
 - `Analyze severity`: Calculates the ‘severity’ of each frame classified as containing attack behavior based on a user-defined scale. **Example:** the user sets a 10-point scale. One frame is predicted to contain an attack, and the total body-part movements of both animals in that frame is in the top 10% percentile of movements in the entire video. In this frame, the attack will be scored as a 10 on the 10-point scale. A date-time stamped output .csv file containing the 'severity' data is saved in the `/project_folder/log` folder.
 
-### Step 10: Visualization
+### Step 10: Sklearn Visualization
 These steps generate visualizations of features and machine learning classification results. This includes images and videos of the animals with prediction overlays, gantt plots, line plots, paths plots and data plots. In this step the different frames can also be merged into video mp4 format. 
 
 ![](/images/visualization.PNG)
@@ -380,10 +380,10 @@ These steps generate visualizations of features and machine learning classificat
 1. Under the **Sklearn visualization** heading, click on `Visualize classification results`.
 This step grabs the frames of the videos in the project, and draws circles at the location of the tracked body parts, the convex hull of the animal, and prints the behavioral predictions on top of the frame. For an example, click [here](https://www.youtube.com/watch?v=7AVUWz71rG4&t=519s).
 
-### Step 11: Plot graphs
-The user can also create a range of plots: **gantt plot**, **Data plot**, **Path plot**, and **Distance plot**.
+### Step 11: Visualizations
+The user can also create a range of plots: **gantt plot**, **Data plot**, **Path plot**, **Distance plot**, and **Heatmap**.
 
-<img src="https://github.com/sgoldenlab/simba/blob/master/images/plotgraphs.PNG" width="262" height="383" />
+![](/images/visualizations.PNG)
 
 #### Gantt plot
 Gantt plot generates gantt plots that display the length and frequencies of behavioral bouts for all the videos in the project.
@@ -428,6 +428,20 @@ Generates distance line plots between two body parts for all of the videos in th
 - `Body part 2`: String that specifies the the bodypart of animal 1. Eg., Nose_2
 
 2. Click on `Generate Distance plot`, and the distance plot frames will be generated in the `project_folder/frames/output/line_plot` folder.
+
+#### Heatmap
+Generates heatmap of behavior that happened in the video.
+
+- `Bin size(px)` :
+
+- `# Scale increments` :
+
+- `Scale increment (s)` :
+
+- `Color Palette` :
+
+- `Target` :
+
 
 ### Step 12: Merge Frames
 Merge all the generated plots from the previous step into single frames.
