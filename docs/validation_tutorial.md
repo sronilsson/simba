@@ -8,6 +8,8 @@
 
 3. Under **[Run machine model]** tab --> **validate Model on Single Video**, select your features file (.csv). It should be located in `project_folder/csv/features_extracted`.
 
+![](/images/validatemodel_graph.PNG)
+
 4. Select a model file (.sav).
 
 5. Click on `Run Model`.
