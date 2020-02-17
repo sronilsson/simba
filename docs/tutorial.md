@@ -339,27 +339,27 @@ The user can validate each model *( saved in .sav format)* file. In this validat
 ### Step 8: Run Machine Model
 This step runs behavioral classifiers on new data. 
 
-<img src="https://github.com/sgoldenlab/simba/blob/master/images/runrfmodel.PNG" width="343" height="132" />
+![](/images/runrfmodel.PNG")
 
 1.  Under the **Run Machine Model** heading, click on `Model Selection`. The following window with the classifier names defined in the *project_config.ini* file will pop up.
 
 <p align="center">
-  <img width="312" height="256" src="https://github.com/sgoldenlab/simba/blob/master/images/rfmodelsettings.PNG">
+  <img width="511" height="232" src="https://github.com/sgoldenlab/simba/blob/master/images/rfmodelsettings.PNG">
 </p>
 
 2. Click on `Browse File` and select the model (*.sav*) file associated with each of the classifier names. 
 
 3. Once all the models have been chosen, click on `Set Model` to save the paths. 
 
-4. Fill in the `Discrimination threshold` and click on `Set` to save the settings.
+4. Fill in the `Discrimination threshold`.
 
 - `Discrimination threshold`: The level of probability required to define that the frame belongs to the target class (see above). 
 
-5. Fill in the `Minimum behavior bout length` and click on `Set` to save the settings.
+5. Fill in the `Minimum behavior bout length`.
 
 - `Minimum behavior bout length (ms)`:  The minimum length of a classified behavioral bout(see above). 
 
-6. Click on `Run RF Model` to run the machine model on the new data. 
+6. Click on `Set model(s)` and then click on `Run RF Model` to run the machine model on the new data. 
 
 ### Step 9: Analyze Machine Results
 Access this menu through the `Load project` menu and the `Run machine model` tab. This step performs summary analyses and presents descriptive statistics in .csv file format. There are three forms of summary analyses: `Analyze`, `Analyze distance/velocity`, and `Analyze severity`.
