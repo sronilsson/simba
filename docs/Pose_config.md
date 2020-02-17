@@ -24,6 +24,22 @@ Next, select an image that is representative of your tracking environment and co
 
 ![alt-text-1](https://github.com/sgoldenlab/simba/blob/master/images/Pose_config_image_3.PNG "Pose config menu 3")
 
+The table contains one row for each body-part specified in the `# of Bodyparts` entry box. Please name the bodyparts by filling in their names. **Do not use spaces in the bodypart names**.
+
+**IMPORTANT** If you have two animals, you might want to track two body-parts with the same name for each of the animals: for example the *Nose* of the two animals. If this is the case, then name the two noses *Nose_1* for animal 1, and *Nose_2* for animal 2.  Click on `Save Pose Configs` to proceed. 
+
+3. After clicking on `Save Pose Configs`, a window named `Define pose` pops open that shows the frame chosen in Image Path, with some instructions at the top, like the image below left). Follow the instructions at the top of the window to label all of your defined body parts, like the gif below on the right: 
+
+
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/Pose_config_image_4.PNG" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/Draw_pose.gif" width="425"/>
+
+The window will close once all the body-parts have been marked. 
+
+4. 
+
+
+
+
 
 
 
