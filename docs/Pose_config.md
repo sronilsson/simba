@@ -18,7 +18,12 @@ Click on `Create pose config` to begin to define a new user-defined pose configu
 
 In the *first* entry box, give your pose-configuration a name. This could be, for example, BtWGaNP_pose: **avoid spaces in the pose config name**. In the *second* entry box, enter the number of animals you wish to track. This could be 1 or 2. In the *third* entry box, enter the number of body-parts the dataset contains. For example, if the dataset contains 8 tracked body-parts on two different animals, I enter the integer 16. 
 
-Next, select an image that is representative of your tracking environment and contains a clear view of all the tracked bodyparts by clicking on `Browse File`. This image will be used to create a reference image,  
+Next, select an image that is representative of your tracking environment and contains a clear view of all the tracked bodyparts by clicking on `Browse File`. This image will be used to create a reference image of your pose configuration settings. After you have selected an image, click on `Confirm`.
+
+3. After clicking confirm the following table should pop open:
+
+![alt-text-1](https://github.com/sgoldenlab/simba/blob/master/images/Pose_config_image_3.PNG "Pose config menu 3")
+
 
 
 
