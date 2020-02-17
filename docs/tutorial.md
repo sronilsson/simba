@@ -339,7 +339,7 @@ The user can validate each model *( saved in .sav format)* file. In this validat
 ### Step 8: Run Machine Model
 This step runs behavioral classifiers on new data. 
 
-![](/images/runrfmodel.PNG")
+![](/images/runrfmodel.PNG)
 
 1.  Under the **Run Machine Model** heading, click on `Model Selection`. The following window with the classifier names defined in the *project_config.ini* file will pop up.
 
