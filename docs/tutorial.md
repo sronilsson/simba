@@ -302,21 +302,17 @@ This step is used for training new machine models for behavioral classifications
 ### Optional step before running machine model on new data
 The user can validate each model *( saved in .sav format)* file. In this validation step the user specifies the path to a previously created model in .sav file format, and a .csv file containing the features extracted from a video. This process will (i) run the classifications on the video, and (ii) create a video with the predictions overlaid together with a gantt plot showing predicted behavioral bouts.  Click[here](https://youtu.be/UOLSj7DGKRo) for an example validation video.
 
-1. Click on `File` --> `Load project`, and the following window will pop up.
+1. Click `Browse File` and select the *project_config.ini* file and click `Load Project`.
 
-![](/images/loadprojectini.PNG)
-
-2. Click `Browse File` and select the *project_config.ini* file and click `Load Project`.
-
-3. Under **[Run machine model]** tab --> **validate Model on Single Video**, select your features file (.csv). It should be located in `project_folder/csv/features_extracted`.
+2. Under **[Run machine model]** tab --> **validate Model on Single Video**, select your features file (.csv). It should be located in `project_folder/csv/features_extracted`.
 
 ![](/images/validatemodel_graph.PNG)
 
-4. Select a model file (.sav).
+3. Under `Select model file`, click on `Browse File` to select a model *(.sav file)*.
 
-5. Click on `Run Model`.
+4. Click on `Run Model`.
 
-6. Once, it is completed, it should print *"Predictions generated."*, now you can click on `Generate plot`. A graph window and a frame window will pop up.
+5. Once, it is completed, it should print *"Predictions generated."*, now you can click on `Generate plot`. A graph window and a frame window will pop up.
 
 - `Graph window`: model prediction probability versus frame numbers will be plot. The graph is interactive, click on the graph and the frame window will display the selected frames.
 
