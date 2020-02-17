@@ -35,7 +35,16 @@ The table contains one row for each body-part specified in the `# of Bodyparts` 
 
 The window will close once all the body-parts have been marked. 
 
-4. 
+4. Your newly created body part configuration should now be accessable though the `Animal Settings` menu next to the text `# config`:
+
+![alt-text-1](https://github.com/sgoldenlab/simba/blob/master/images/Pose_config_image_5.PNG "Pose config menu 5")
+
+5. If you would like to use your newly created pose-configuration setting in a new DeepLabCut project. 
+
+![alt-text-1](https://github.com/sgoldenlab/simba/blob/master/images/
+DLC_menu_pose.png "Pose config menu 6")
+
+
 
 
 
