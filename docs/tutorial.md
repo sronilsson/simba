@@ -432,7 +432,9 @@ Generates distance line plots between two body parts for all of the videos in th
 #### Heatmap
 Generates heatmap of behavior that happened in the video.
 
-- `Bin size(px)` :
+1. Fill in the `Bin size(px)`, `# Scale increments`, and `Scale increment (s)`. Then from the dropdown box, select `Color Palette`, and `Target`.
+
+- `Bin size(px)` : 
 
 - `# Scale increments` :
 
@@ -442,6 +444,7 @@ Generates heatmap of behavior that happened in the video.
 
 - `Target` :
 
+2. Click `Generate heatmap` to generate heatmap of the target behavior.
 
 ### Step 12: Merge Frames
 Merge all the generated plots from the previous step into single frames.
