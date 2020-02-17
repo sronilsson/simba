@@ -442,6 +442,10 @@ Generates heatmap of behavior that happened in the video.
 
 - `Color Palette` :
 
+<p align="center">
+  <img width="400" height="137" src="https://github.com/sgoldenlab/simba/blob/master/images/SimBA_pallettes.PNG">
+</p>
+
 - `Target` :
 
 2. Click `Generate heatmap` to generate heatmap of the target behavior.
