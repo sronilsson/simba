@@ -448,6 +448,10 @@ Generates heatmap of behavior that happened in the video.
 - `Color Palette` :
 
 <p align="center">
+  <img width="400" height="137" src="https://github.com/sgoldenlab/simba/blob/master/images/heatmap.gif">
+</p>
+
+<p align="center">
   <img width="400" height="137" src="https://github.com/sgoldenlab/simba/blob/master/images/SimBA_pallettes.PNG">
 </p>
 
