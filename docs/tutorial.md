@@ -452,9 +452,9 @@ Generates heatmap of behavior that happened in the video.
 </p>
 
 
-<img src="https://github.com/sgoldenlab/simba/blob/master/images/magma_heatmap.gif" width="200"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/gnuplot_heatmap.gif" width="200"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/inferno_heatmap.gif" width="200"/>
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/magma_heatmap.gif" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/gnuplot_heatmap.gif" width="425"/>
 
-<img src="https://github.com/sgoldenlab/simba/blob/master/images/jet_heatmap.gif" width="200"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/plasma_heatmap.gif" width="200"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/viridis_heatmap.gif" width="200"/>
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/jet_heatmap.gif" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/viridis_heatmap.gif" width="425"/>
 
 
 - `Target` :
