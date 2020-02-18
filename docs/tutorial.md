@@ -448,12 +448,14 @@ Generates heatmap of behavior that happened in the video.
 - `Color Palette` :
 
 <p align="center">
-  <img width="400" height="137" src="https://github.com/sgoldenlab/simba/blob/master/images/heatmap.gif">
-</p>
-
-<p align="center">
   <img width="400" height="137" src="https://github.com/sgoldenlab/simba/blob/master/images/SimBA_pallettes.PNG">
 </p>
+
+
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/magma_heatmap.gif" width="283"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/gnuplot_heatmap.gif" width="283"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/inferno_heatmap.gif" width="283"/>
+
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/jet_heatmap.gif" width="283"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/plasma_heatmap.gif" width="283"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/viridis_heatmap.gif" width="283"/>
+
 
 - `Target` :
 
