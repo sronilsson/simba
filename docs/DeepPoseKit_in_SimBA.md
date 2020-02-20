@@ -20,6 +20,12 @@ Once clicked, the following window should pop open:
 
 ![](https://github.com/sgoldenlab/simba/blob/master/images/DPK2.png "dir_info")
 
+Next to the SimBA project.inin file, click on browse and select your SimBA project_config.ini file. Next to project Name, give your DeepPoseKit project a name (*Note:* avoid using spaces in the name. Instead, use underscore if needed). Click on Generate project to create your DeepPoseKit project folder structure. 
+
+
+
+
+
 
 
 
