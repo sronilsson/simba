@@ -10,7 +10,15 @@ DeepPoseKit projects can be created and managed in SimBa, and DeepPosekit tracki
 
 # Creating a DeepPoseKit project in SimBA
 
-To begin using DeepPoseKit in SimBA, begin by creating a SimBA project by clicking on 
+To begin using DeepPoseKit in SimBA, begin by creating a SimBA project as decribed in-depth in [Part 1 - Create a new project](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#part-1-create-a-new-project-1) of the Scenario 1 Tutorial. 
+
+Next, close the Project Configuration window. In the main SimBA console window, click on Tracking and DeepPoseKit, and choose Create DeepPoseKit project.
+
+![](https://github.com/sgoldenlab/simba/blob/master/images/DPK1.png "dir_info")
+
+Once clicked, the following window should pop open: 
+
+![](https://github.com/sgoldenlab/simba/blob/master/images/DPK2.png "dir_info")
 
 
 
