@@ -94,13 +94,15 @@ This step generates a new DeepLabCut project.
 
 6. Next, select the main directory that your project will be located in. Next to `Project directory`, click on `Browse Folder` and choose a directory.
 
-7. If you wish to use the settings used by the Golden lab (this setting is used to track two mice, and eight body parts on each of the two mice) check the `Apply Golden Aggression Config' box. For more information, see above section and figure. If you wish to generate your own DeepLabCut tracking config, using a different annotation configuration, please leave this box un-ticked.
+7. **Optional**: If you have previously created a SimBA project, **and** a user-defined body-part configuration schematic in SimBA, you may want to use this configuration in your DeepLabCut tracking project. If so, go ahead and click on `Browse File` next to the text `Bp config file`. These body-part configurations are saved in you SimBA project, in a CSV file located in the  `project_folder/logs/measures/pose_configs/bp_names\project_bp_names.csv` file. Navigate to this file and select it. If you **do not** want to use a SimBA-created bosy-part configuration file, leave the `Bp config file` entry box empty. 
 
-8. You can either copy all the videos to your DeepLabCut project folder, or create shortcuts to the videos. By checking the `Copy Videos` checkbox, the videos will be copied to your project folder. If this box is left un-ticked, shortcuts to your videos will be created. This can be useful if you wish to save storage space, or if you have very large or numerous video files.
+8. If you wish to use the settings used by the Golden lab (this setting is used to track two mice, and eight body parts on each of the two mice) check the `Apply Golden Aggression Config` box. For more information, see above section and figure. If you wish to generate your own DeepLabCut tracking config, using a different annotation configuration, please leave this box un-ticked.
 
-9. Click on `Create Project` to create your DeepLabCut project. The project will be located in the chosen **working directory**.
+9. You can either copy all the videos to your DeepLabCut project folder, or create shortcuts to the videos. By checking the `Copy Videos` checkbox, the videos will be copied to your project folder. If this box is left un-ticked, shortcuts to your videos will be created. This can be useful if you wish to save storage space, or if you have very large or numerous video files.
 
-10. You will need to Load this project to use it. Move to Part 2 below.
+10. Click on `Create Project` to create your DeepLabCut project. The project will be located in the chosen **working directory**.
+
+11. You will need to Load this project to use it. Move to Part 2 below.
 
 ## Part 2: Load DLC Project
 These menus are used to load created DeepLabCut projects.
