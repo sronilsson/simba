@@ -168,6 +168,11 @@ Click on `Generate Distance plot`, and the distance plot frames will be generate
   <img width="400" height="137" src="https://github.com/sgoldenlab/simba/blob/master/images/SimBA_pallettes.PNG">
 </p>
 
+
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/magma_heatmap.gif" width="425"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/gnuplot_heatmap.gif" width="425"/>
+
+
+
 magma             |  gnuplot2
 :-------------------------:|:-------------------------:
 ![](https://github.com/sgoldenlab/simba/blob/master/images/magma_heatmap.gif)  |  ![](https://github.com/sgoldenlab/simba/blob/master/images/gnuplot_heatmap.gif)
