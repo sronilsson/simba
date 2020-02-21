@@ -176,10 +176,21 @@ jet|viridis
 inferno|plasma
 ![](https://github.com/sgoldenlab/simba/blob/master/images/inferno_heatmap.gif)  |  ![](https://github.com/sgoldenlab/simba/blob/master/images/plasma_heatmap.gif)
 
+To generate heatmaps, SimBA needs several user-defined variables:
 
+- `Bin size(px)` : Pose-estimation coupled with supervised machine learning in SimBA gives information on the location of an event at the single pixel resolution, which is too-high of a resolution to be useful in heatmap generation. In this entry box, insert an integer value (e.g., 100) that dictates, in pixels, how big a location is. For example, if the user inserts *100*, and the video is filmed using 1000x1000 pixels, then SimBA will generate a heatmap based on 10x10 locations (each being 100x100 pixels large).   
 
+- `# Scale increments` : How many color increments on the heatmap that should be generated. For example, if the user inputs *11*, then a 11-point scale will be created (as in the gifs above). 
 
+- `Scale increment (s)` : How many seconds should constitute a color increment. For example, if the users specifies *0.1*, then a 100ms increase in the time of enganging in the bahvior in a specific location results in a color increment. 
 
+- `Color Palette` : Which color pallette to use to plot the heatmap. See the gifs above for different output examples. 
+
+- `Target` : Which target behavior to plot in the heatmap. 
+
+Once filled in, click on `Generate heatmap`:
+
+>*Note*: After clicking on `Generate heatmap`, the code will run through each csv file in your `project_folder\csv\machine_results` directory, and generate one heatmap frame for each frame of the video and save it in the `project_folder\frames\output\heatmap` directory, contained within a new folder named after the video file. if you would like to generate heatmaps for only a select csv file, remove the files you want to omitt from visualizing distance plots for from the `project_folder\csv\machine_results` directory. For example, you can manually create a temporary `project_folder\csv\machine_results\temp` directory and place the files you do **not** want to visualize in this temporary folder. If you'd like to create a video or gif from the heatmap frames, you can do so by using the [SimBA tools menu](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_tools.md) and the [`Merge images to video`](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_tools.md#merge-images-to-video) or [Generate gifs](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_tools.md#generate-gifs) tools. 
 
 6. **Merge Frames**. If you have followed through all of **Part 5** of this tutorial, you should have generated several graphs of your machine classifications and extracted data (i.e., gantt plots, line plots, path plots, data plots, sklearn plots). These images are stored in different sub-directories in the `project_folder\frames\output` folder. Now you may want to merge all these frames into single frames, and later into a video, to more readily observe the behavior of interest and its different expression in experimental groups, like in the following video example:   
 
