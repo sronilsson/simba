@@ -2,7 +2,7 @@
 
 We strongly recommend using SimBA with a [16-body-part, 2 animal, pose-configuration setting](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling). Besides this body-part configuration, SimBa also comes with several other other pre-generated pose-configuration settings which can be selected in the [Create Project](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#step-1-generate-project-config) menu.
 
-Furthermore, users can also define their own pose-configuration settings and use any number of body-part configuration in SimBA. **CAUTION**: When users create projects with user-defined body part configurations, SimBA calculates fewer features for the machine models and this may negatively affect the prediction performance. Thus, if users **can** use the suggested [16-body-part, 2 animal, pose-configuration setting](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling) we recommend doing so. Click [HERE](https://github.com/sgoldenlab/simba/blob/master/misc/features_user_defined_pose_config.csv) for a list of the features that SimBA calculates based on user-defined pose configurations.  
+Furthermore, users can also define their own pose-configuration settings and use any number of body-part configuration in SimBA. **CAUTION**: When users create projects with user-defined body part configurations, SimBA calculates fewer features for the machine models and this may negatively affect the prediction performance. Thus - *if users have the option* - we suggest that the [16-body-part, 2 animal, pose-configuration setting](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling) us used. Click [HERE](https://github.com/sgoldenlab/simba/blob/master/misc/features_user_defined_pose_config.csv) for a list of the features that SimBA calculates based on user-defined pose configurations.  
 
 # Create a new user-defined pose-configuration
 
@@ -39,9 +39,17 @@ The window will close once all the body-parts have been marked.
 
 ![alt-text-1](https://github.com/sgoldenlab/simba/blob/master/images/Pose_config_image_5.PNG "Pose config menu 5")
 
-5. If you would like to use your newly created pose-configuration setting in a new DeepLabCut project. 
+
+# Optional: Creating DeepLabCut projects using user-defined pose-configurations in SimBA
+
+5. If you would like to use your newly created pose-configuration setting in a new DeepLabCut project through SimBA, click the following box next to the text `Bp config file` in the `Create DLC model` menu. For more information on how to use DeepLabCut in SimBA, click [HERE](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Tutorial_DLC.md).
 
 ![alt-text-1](https://github.com/sgoldenlab/simba/blob/master/images/DLC_menu_pose.png "Pose config menu 6")
+
+Once clicked on, first navigate to your SimBA project. Your SimBA body-part configuration is saved in a csv file within your SimBA project. Go ahead and navigate to `project_folder/logs/measures/pose_configs/bp_names\project_bp_names.csv` and select this file. 
+
+When you click on `Create project` in the  DeepLabCut `Create Project` menu, your DeepLabCut project will now be based on your SimBA-configured body-parts.  
+
 
 
 
