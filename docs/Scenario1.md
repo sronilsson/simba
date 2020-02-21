@@ -64,7 +64,9 @@ In this step you create your main project folder, which will then auto-populate 
   <img width="385" height="106" src="https://github.com/sgoldenlab/simba/blob/master/images/classifier1.PNG">
 </p>
 
-6. The sub-menu `Animal Settings` is the number of animals and body parts that that the pose estimation tracking data contains. The default for **SimBA** is 2 animals and 16 body parts ( `2 animals, 16bp`). There are a few other - **yet not validaded** - options, accessible in the dropdown menu. This selection is the annotation configuration you should have previously used when labelling images in DeepLabCut, see the tutorial for **[Pose estimation body-part labelling](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling)** for more information.
+6. The sub-menu `Animal Settings` is the number of animals and body parts that that the pose estimation tracking data contains. The default for **SimBA** is 2 animals and 16 body parts ( `2 animals, 16bp`). There are a few other - **yet not validaded** - options, accessible in the dropdown menu. This selection is the annotation configuration you should have previously used when labelling images in DeepLabCut or DeepPoseKit - see the tutorial for **[Pose estimation body-part labelling](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling)** for more information. 
+
+*>Note:* If you want to use a different body-part configuration that is not shown in the drop-down menu - go tho the tutorial for creating [user-defined pose-configurations](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Pose_config.md) in SimBA
 
 7. Click on `Generate Project Config` to generate your project. The project folder will be located in the specified `Project Path`. The Project will remain open, and the main console will report that the project has been created.
 
@@ -110,16 +112,17 @@ In Part 1, we created a project. To continue working with this project, we **mus
 ### Step 1: Load Project Config
 In this step you will load the *project_config.ini* file that was created.
 > *Note:* A project_config.ini should **always** be loaded before any other process.
+
 1. In the main SimBA window, click on `File` and `Load project`. The following windows will pop up.
 
 <p align="center">
-  <img width="1255" height="380" src="https://github.com/sgoldenlab/simba/blob/master/images/loadproject.PNG">
+  <img width="1255" height="380" src="https://github.com/sgoldenlab/simba/blob/master/images/Load_project_SimBA.PNG">
 </p>
 
-2. Under the `Load Project` tab, click on `Browse File`. Then, navigate to the directory that you created your project in and click on your *project folder*. Locate the *project_config.ini* file and select it. Once this step is completed, the `Load Project` tab should look like the following, and you should no longer see the text *No file selected*:
+2. Click on `Browse File`. Then, navigate to the directory that you created your project in and click on your *project folder*. Locate the *project_config.ini* file and select it. Once this step is completed, the `File Selected` entry box should look like the following, and you should no longer see the text *No file selected*:
 
 <p align="center">
-  <img width="500" height="60" src="https://github.com/sgoldenlab/simba/blob/master/images/loadedprojectini.PNG">
+  <img width="500" height="60" src="https://github.com/sgoldenlab/simba/blob/master/images/Load_project2_SimBA.PNG">
 </p>
 
 In this image, you can see the `Desktop` is my selected working directory, `tutorial` is my project name, and the last two sections of the folder path is always going to be `project_folder/project_config.ini`.
