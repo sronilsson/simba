@@ -64,7 +64,7 @@ In this step you create your main project folder, which will then auto-populate 
   <img width="385" height="106" src="https://github.com/sgoldenlab/simba/blob/master/images/classifier1.PNG">
 </p>
 
-6. The sub-menu `Animal Settings` is the number of animals and body parts that that the pose estimation tracking data contains. The default for **SimBA** is 2 animals and 16 body parts ( `2 animals, 16bp`). There are a few other - **yet not validaded** - options, accessible in the dropdown menu. This selection is the annotation configuration you should have previously used when labelling images in DeepLabCut or DeepPoseKit - see the tutorial for **[Pose estimation body-part labelling](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling)** for more information. 
+6. The sub-menu `Animal Settings` is the number of animals and body parts that that the pose estimation tracking data contains. The default for **SimBA** is 2 animals and 16 body parts (`2 animals, 16bp`). There are a few other - **yet not validaded** - options, accessible in the dropdown menu. This selection is the annotation configuration you should have previously used when labelling images in DeepLabCut or DeepPoseKit - see the tutorial for **[Pose estimation body-part labelling](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling)** for more information. 
 
 *>Note:* If you want to use a different body-part configuration that is not shown in the drop-down menu - go tho the tutorial for creating [user-defined pose-configurations](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Pose_config.md) in SimBA
 
@@ -214,9 +214,15 @@ Based on the coordinates of body parts in each frame - and the frame rate and th
 
 This set of features will depend on the body-parts tracked during pose-estimation (which is defined when creating the project). Click [here](https://github.com/sgoldenlab/simba/blob/master/misc/Feature_description.csv) for an example list of features when tracking 2 mice and 16 body parts. 
 
->*Note*: If you use a different DeepLabCut annotation configuration, such as 3 body parts with 2 mice, then the feature list will be significantly reduced and may subsequently negatively influence prediction performance.
+>*Note I*: If you use a different SimBA pre-packaged DeepLabCut body-part annotation configuration, such as 3 body parts with 2 mice, then the feature list will be significantly reduced and may subsequently negatively influence prediction performance. For a reminder of the different SimBA pre-packaged DeepLabCut body-part annotation configurations, click [here](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md). 
 
-1. Click on `Extract Features`. New CSV files, that contain the feature data and the pose-estimation data, should be generated and saved in the `project_folder\csv\features_extracted` directory, with one file for every DLC tracking file imported to the project.  
+>*Note II*: If have created your own [*user-defined* body-part configuration]9https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Pose_config.md), then SimBA will generate a set of generic features based on the distances and movements of all body-parts and their relation to each other. To see a list of these generic features, please click [here](https://github.com/sgoldenlab/simba/blob/master/misc/features_user_defined_pose_config.csv). This generic feature list is likely to have significicantly reduced predictive power and generate weaker predictive classifiers relative to the feature list calculated from [16 body-parts and 2 mice](https://github.com/sgoldenlab/simba/blob/master/misc/Feature_description.csv).
+
+1. Click on the tab `Extract Features`, and then the button `Extract Features`. 
+
+![](https://github.com/sgoldenlab/simba/blob/master/images/Extract_features_SimBA.PNG "extract_features")
+
+New CSV files, that contain the feature data and the pose-estimation data, will be generated and saved in the `project_folder\csv\features_extracted` directory, with one file for every DLC tracking file imported to the project. This tab also displays a second button - `Append ROI data to features`. We explain the function of this button in the [ROI tutorial](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/ROI_tutorial.md), and how it can be used to create features from spatial locations/objects in the videos.  
 
 2. We want to validate the classifier for behavior BtWGaNP on a separate video, and that video should not be used in the training and testing steps. In the current Scenario 1, we have generated 20 files containing features and they are stored in the `project_folder\csv\features_extracted` folder. To store away one of these files for later validation, navigate to the `project_folder\csv\features_extracted` folder, and cut one file out of the `project_folder\csv\features_extracted` folder, and paste it somewhere else outside of your `project_folder`. This way, SimBA won't see the file in later steps, and it will be omitted from inclusion for when creating the model. We will later define the directory path to this file, and try to predict behavior BtWGaNP in this file from the classifer generated using data in the other 19 data files.  
 
@@ -248,9 +254,7 @@ This step is used for training new machine models for behavioral classifications
 
 1. Click on `Settings` and the following window will pop up. 
 
-<p align="center">
-  <img width="378" height="712" src="https://github.com/sgoldenlab/simba/blob/master/images/machinemodelsettings.PNG">
-</p>
+![](https://github.com/sgoldenlab/simba/blob/master/images/Machine_model_settings_SimBA.PNG "machine model settings")
 
 >*Note I:* If you have a CSV file containing hyperparameter metadata, you can import this file by clicking on `Browse File` and then click on `Load`. This will autofill all the Hyperparameter entry boxes and model evaluation settings. For the Scenario 1, we [provide](https://github.com/sgoldenlab/simba/blob/master/misc/BtWGaNP_meta.csv) a Metadata file that will populate the Hyperparameter entry boxes and evaluation settings with some default values. Please save this file to disk and load it. If you downloaded SimBA through our github page, the Metadata file should be in the *simba/misc* directory. 
 
@@ -294,7 +298,9 @@ Here is a brief description of the different Model evaluation settings available
 
 - `Generate RF model meta data file`: Generates a CSV file listing the hyper-parameter settings used when creating the model. The generated meta file can be used to create further models by importing it in the `Load Settings` menu (see above, **Step 1**).
 
-- `Generate Example Decision Tree`: Saves a visualization of a random decision tree in PDF and .DOT formats. Requires [graphviz](https://graphviz.gitlab.io/). For more information on this visualization, click [here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.export_graphviz.html). For information on how to install on Windows, click [here](https://bobswift.atlassian.net/wiki/spaces/GVIZ/pages/20971549/How+to+install+Graphviz+software). For an example of a decision tree visualization generated through SimBA, click [here](https://github.com/sgoldenlab/simba/blob/master/images/BtWGaNP_tree.pdf). *Note:*  The trees can be very large depending on the Hyperparameter settings. Rather than using a dedicated PDF viewer, try opening the generated PDF by dragging it into a web browser to get a better view. 
+- `Generate Example Decision Tree - graphviz`: Saves a visualization of a random decision tree in PDF and .DOT formats. Requires [graphviz](https://graphviz.gitlab.io/). For more information on this visualization, click [here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.export_graphviz.html). For information on how to install on Windows, click [here](https://bobswift.atlassian.net/wiki/spaces/GVIZ/pages/20971549/How+to+install+Graphviz+software). For an example of a graphviz decision tree visualization generated through SimBA, click [here](https://github.com/sgoldenlab/simba/blob/master/images/BtWGaNP_tree.pdf). *Note:*  The trees can be very large depending on the Hyperparameter settings. Rather than using a dedicated PDF viewer, try opening the generated PDF by dragging it into a web browser to get a better view. 
+
+- `Generate Fancy Example Decision Tree - dtreeviz`: Saves a nice looking visualization of a random decision tree in SVG format. Requires [dtreeviz](https://github.com/parrt/dtreeviz). For an example of a dtreeviz decision tree visualization generated through SimBA, click [here](https://github.com/sgoldenlab/simba/blob/master/images/dtreeviz_SimBA.png). *Note:* These SVG example decision trees are very large. To be able to view them on standard computers, SimBA limits the depth of the example tree to 3 levels.
 
 - `Generate Classification Report`: Saves a classification report truth table in PNG format displaying precision, recall, f1, and support values. For more information, click [here](http://www.scikit-yb.org/zh/latest/api/classifier/classification_report.html). For an example of a classification report generated through SimBA, click [here](https://github.com/sgoldenlab/simba/blob/master/images/BtWGaNP_classificationReport.png).  
 
@@ -326,11 +332,11 @@ However, if you click on `Save settings for specific model`, a config file will 
 
 ### Critical validation step before running machine model on new data
 
-If you have chosen to generate classification reports or other metrics of classifier performance, it is worth studying them to ensure that the model(s) performance is acceptable. However, a classifiers performance is perhaps most readily validated by visualizing its predictions on a new video, which have not been used for training or testing. This step is critical for visual confirmation that model performance is sufficent for running it on experimental data. 
+If you have chosen to generate classification reports or other metrics of classifier performance, it is worth studying them to ensure that the model(s) performance is acceptable. However, a classifiers performance is perhaps most readily validated by visualizing its predictions and prediction probabilities on a new video, which have not been used for training or testing. This step is critical for (i) visualizing and choosing the ideal classification probability thresholds which captures all of your BtWGaNP behaviors, and (i) visual confirmation that model performance is sufficent for running it on experimental data.
 
-You can validate each model *(saved in .sav format)* file. This should be done in a "gold-standard" video that has been fully manually annotated for your behavior of interest, but has not been included in the training dataset. If you followed the tutorial, you may remember that we stored away one CSV file away in a safe place earlier, a [file which we had extracted the features](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#step-5-extract-features) for but we did not use this file for training or testing of the classifier. Now is the time to use this file. 
+You can validate each model *(saved in SAV format)* file. This should be done in a "gold-standard" video that has been fully manually annotated for your behavior of interest, but has not been included in the training dataset. If you followed the tutorial, you may remember that we stored away one CSV file away in a safe place earlier, a [file which we had extracted the features](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#step-5-extract-features) for but we did not use this file for training or testing of the classifier. Now is the time to use this file. 
 
-In this validation step the user specifies the path to a previously created model in .sav file format, and the path to a CSV file [that contain the features extracted from a video (Step 5 above)](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#step-5-extract-features). This process will (i) run the predictions on the video, and (ii) create a video with the predictions overlaid together with a gantt plot showing predicted behavioral bouts. Click [here](https://youtu.be/UOLSj7DGKRo) for an expected output validation video for predicting the behavior *copulation*. 
+In this validation step the user specifies the path to a previously created model in SAV file format, and the path to a CSV file [that contain the features extracted from a video (Step 5 above)](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#step-5-extract-features). The first process will run the predictions on the video, and visualize the probabilities in a user-interactable line chart, that together with a user-interactable visualization of the video can be used to gauge the ideal discrimination threshold. The second process will create a video with the predictions overlaid together with a gantt plot showing predicted behavioral bouts. Click [here](https://youtu.be/UOLSj7DGKRo) for an expected output validation video for predicting the behavior *copulation*. 
 
 This process allows you to rapidly access the results of the Hyperparameters you have selected on a "gold-standard" behavioral video. If the predictions are not good, you can go back to tweak the appropriate parameters without first running through numerous other videos or adding and/or refining your annotations. 
 
@@ -338,7 +344,16 @@ This process allows you to rapidly access the results of the Hyperparameters you
 
 1. Under the **Run machine model tab** and *Validate Model on Single Video* heading, click on `Browse File` next to `Select features file`. In this current Scenario 1, select the CSV file you have stored [in a safe place outside of the project folder](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#step-5-extract-features). 
 
-2. Next to `Select model file`, click on `Browse File` to select a model (*.sav file*). Your *.sav file(s)* should be saved in the `project_folder\models\generated_models` or the `project_folder\models\validations\model_files` folder, depending on which **mode** of model generatation you [used above](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#train-predictive-classifiers-start-the-machine-training). However, note that SimBA does not care where the model *.sav file* is located, and could be - for example - in the *Downloads* folder if you have downloaded it from our [OSF repository](https://osf.io/d69jt/). 
+2. Next to `Select model file`, click on `Browse File` to select a model (*.sav file*). Your *.sav file(s)* should be saved in the `project_folder\models\generated_models` or the `project_folder\models\validations\model_files` folder, depending on which **mode** of model generatation you [used above](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#train-predictive-classifiers-start-the-machine-training). However, note that SimBA does not care where the model *.sav file* is located, and could be - for example - in the *Downloads* folder if you have downloaded it from our [OSF repository](https://osf.io/d69jt/). When done, click on `Run model`. There will be a message in the main SimBA terminal window when the process is complete.   
+
+4. Next, click on `Generate plot`. Two windows should pop open, a *Prediction probability* line graph for your chosen behaviour (left) and an interactive display of your video (right):
+
+![](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/images/validategraph.gif "validation1")
+
+
+
+
+
 
 3. Set the `Discrimination threshold` and `Minimum behavior bout length (ms)`:
 
