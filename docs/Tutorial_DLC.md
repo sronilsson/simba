@@ -28,7 +28,7 @@ We have validated SimBA by labelling 16 body parts (8 body parts on two individu
 
 Please note that the **order** of body part annotation is important, and matches the labelling schematic above.
 
-If using SimBA, set the DeepLabCut config to use the 16 body part schematic by checking the `Apply Golden Aggression Config' box (See **Step 1**, below). Pre-trained DLC tracking models using the 16 body part schematic and two animals can also be downloaded through [OSF](https://osf.io/5t4y9/), covering a range of acquisition parameters (color video, blank and white video, etc).
+If using SimBA, set the DeepLabCut config to use the 16 body part schematic by checking the `Apply Golden Aggression Config` box (See **Step 1**, below). Pre-trained DLC tracking models using the 16 body part schematic and two animals can also be downloaded through [OSF](https://osf.io/5t4y9/), covering a range of acquisition parameters (color video, blank and white video, etc).
 
 However, SimBA will also accept alternative body labelling schematics (see the above figure). These alternative schematics currently include:
 
@@ -40,6 +40,9 @@ However, SimBA will also accept alternative body labelling schematics (see the a
    * 9 body parts on a single mouse recorded 45° side angle
    
 **Important**: So far we have only validated machine learning models that use features calculated from 16 labelled body parts on two individual animals. The other configurations are "use at your own risk" and may require trouble-shooting.
+
+> *Note* : SimBA now also supports user-created body-part annotation schemes. These annotations schemes can be created in the SimBA project configuration menu - click [HERE](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Pose_config.md) to learn more.
+
 
 ## SimBA-DLC Pipeline breakdown
 For detailed information on the DeepLabCut workflow, see the [DeepLabCut repository](https://github.com/AlexEMG/DeepLabCut). 
@@ -75,7 +78,7 @@ This step generates a new DeepLabCut project.
 
 1. In the main SimBA window, click on `Tracking` --> `DeepLabCut` --> `Create DLC Model`. The following window will pop up.
 
-![alt-text-1](/images/createdlcmodel2.png "createdlcmodel2")
+![alt-text-1](https://github.com/sgoldenlab/simba/blob/master/images/DLC_menu2.PNG "createdlcmodel2")
 
 2. Enter the name of your project in the `Project name` entry box.
 
