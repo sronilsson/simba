@@ -171,10 +171,8 @@ Click on `Generate Distance plot`, and the distance plot frames will be generate
 magma             |  gnuplot2
 :-------------------------:|:-------------------------:
 ![](https://github.com/sgoldenlab/simba/blob/master/images/magma_heatmap.gif)  |  ![](https://github.com/sgoldenlab/simba/blob/master/images/gnuplot_heatmap.gif)
-jet|viridis
-![](https://github.com/sgoldenlab/simba/blob/master/images/jet_heatmap.gif)  |  ![](https://github.com/sgoldenlab/simba/blob/master/images/viridis_heatmap.gif)
-inferno|plasma
-![](https://github.com/sgoldenlab/simba/blob/master/images/inferno_heatmap.gif)  |  ![](https://github.com/sgoldenlab/simba/blob/master/images/plasma_heatmap.gif)
+jet|viridis![](https://github.com/sgoldenlab/simba/blob/master/images/jet_heatmap.gif)  |  ![](https://github.com/sgoldenlab/simba/blob/master/images/viridis_heatmap.gif)
+inferno|plasma ![](https://github.com/sgoldenlab/simba/blob/master/images/inferno_heatmap.gif)  |  ![](https://github.com/sgoldenlab/simba/blob/master/images/plasma_heatmap.gif)
 
 To generate heatmaps, SimBA needs several user-defined variables:
 
