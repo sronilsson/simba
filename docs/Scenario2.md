@@ -168,28 +168,13 @@ Click on `Generate Distance plot`, and the distance plot frames will be generate
   <img width="400" height="137" src="https://github.com/sgoldenlab/simba/blob/master/images/SimBA_pallettes.PNG">
 </p>
 
-| palette  | image |
-| ------------- | ------------- |
-| magma  | > |
-| jet  | <img src="https://github.com/sgoldenlab/simba/blob/master/images/jet_heatmap.gif" width="200" height="300">  |
-| inferno  | <img src="https://github.com/sgoldenlab/simba/blob/master/images/magma_heatmap.gif" width="200" height="200"> |
-| jet  | <img src="https://github.com/sgoldenlab/simba/blob/master/images/jet_heatmap.gif" width="200" height="200">  |
 
-
-
-| First Header  | Second Header |Second Header |Second Header |
+| palette | gif |palette|gif |
 | ------------- | ------------- |------------- |------------- |
-| magma         | <img src="https://github.com/sgoldenlab/simba/blob/master/images/magma_heatmap.gif" width="100" height="150">  |inferno        |<img src="https://github.com/sgoldenlab/simba/blob/master/images/inferno_heatmap.gif" width="100" height="150">   |
-| jet           | <img src="https://github.com/sgoldenlab/simba/blob/master/images/jet_heatmap.gif" width="100" height="150">  |plasma        |<img src="https://github.com/sgoldenlab/simba/blob/master/images/plasma_heatmap.gif" width="100" height="150">   |
-| viridis       | <img src="https://github.com/sgoldenlab/simba/blob/master/images/viridis_heatmap.gif" width="100" height="150">   |gnuplot       |<img src="https://github.com/sgoldenlab/simba/blob/master/images/gnuplot_heatmap.gif" width="100" height="150">   |
+| magma         | <img src="https://github.com/sgoldenlab/simba/blob/master/images/magma_heatmap.gif" width="300" height="350">  |inferno        |<img src="https://github.com/sgoldenlab/simba/blob/master/images/inferno_heatmap.gif" width="300" height="350">   |
+| jet           | <img src="https://github.com/sgoldenlab/simba/blob/master/images/jet_heatmap.gif" width="300" height="350">  |plasma        |<img src="https://github.com/sgoldenlab/simba/blob/master/images/plasma_heatmap.gif" width="300" height="350">   |
+| viridis       | <img src="https://github.com/sgoldenlab/simba/blob/master/images/viridis_heatmap.gif" width="300" height="350">   |gnuplot       |<img src="https://github.com/sgoldenlab/simba/blob/master/images/gnuplot_heatmap.gif" width="300" height="350">   |
 
-
-
-magma             |  gnuplot2
-:-------------------------:|:-------------------------:
-  |  ![](https://github.com/sgoldenlab/simba/blob/master/images/gnuplot_heatmap.gif)
-jet|viridis![](https://github.com/sgoldenlab/simba/blob/master/images/jet_heatmap.gif)  |  ![](https://github.com/sgoldenlab/simba/blob/master/images/viridis_heatmap.gif)
-inferno|plasma ![](https://github.com/sgoldenlab/simba/blob/master/images/inferno_heatmap.gif)  |  ![](https://github.com/sgoldenlab/simba/blob/master/images/plasma_heatmap.gif)
 
 To generate heatmaps, SimBA needs several user-defined variables:
 
