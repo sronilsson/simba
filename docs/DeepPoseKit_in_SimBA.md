@@ -39,19 +39,27 @@ When DeepPoseKit projects are created in SimBA, they each come with their own *.
 
 # Part 3: Working with DeepPoseKit projects in SimBA
 
-
-## Step 1: Using the DeepPoseKit Annotator in SimBA 
+## Step 2: Using the DeepPoseKit Annotator in SimBA 
 
 In the DeepPoseKit window, click on the `Annotator` tab and you should see the following window:
 
 ![](https://github.com/sgoldenlab/simba/blob/master/images/DPK_4.png "DPK_4")
 
-Click on `Browse File` and select your annotation *.h5* file located in the `annotation_sets` directory. Click on run and the following windows should pop open: 
+Click on `Browse File` and select your annotation *.h5* file located in the `annotation_sets` directory. Click on `Run` and the following windows should pop open, with instructions displayed on the right: 
 
+![](https://github.com/sgoldenlab/simba/blob/master/images/DPK_annotator.PNG "DPK_4")
+
+After the annotations are complete, press `Esc` to save your annotations. 
 
 ## Step 3: Training DeepPoseKit models in SimBA
 
-For documentation on the different neural network parameters and architectures available, see Jake Garvings' [DeepPosekit](https://github.com/jgraving/DeepPoseKit) documentation. In SimBA, the the entry boxes defaults to the DeepPoseKit deafults. 
+For documentation on the different neural network parameters and architectures available, see Jake Garvings' [DeepPosekit](https://github.com/jgraving/DeepPoseKit) documentation. In SimBA, the the entry boxes defaults to the DeepPoseKit deafults.
+
+Click on the 
+
+![](https://github.com/sgoldenlab/simba/blob/master/images/DPK_5.png "DPK_5")
+
+![](https://github.com/sgoldenlab/simba/blob/master/images/DPK_6.png "DPK_6")
 
 ## Step 4: Track body-part coordinates using DeepPoseKit in SimBA
 
