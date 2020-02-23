@@ -63,7 +63,10 @@ For documentation on the different parameters and network architectures availabl
 
 To access architecture-specific settings, click on the `Model Settings` button. Depending on the chosen archiceture, you should see one of the three possible menus:
 
-<img src="https://github.com/sgoldenlab/simba/blob/master/images/DPK_7.png" width="200"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/DPK_8.png" width="200"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/DPK_9.png" width="200"/>
+| StackedDenseNet/Hourglass  | DeepLabCut |LEAP |
+| ------------- | ------------- |------------- |
+| <img src="https://github.com/sgoldenlab/simba/blob/master/images/DPK_7.png" width="200"/>  | <img src="https://github.com/sgoldenlab/simba/blob/master/images/DPK_8.png" width="200"/> |  <img src="https://github.com/sgoldenlab/simba/blob/master/images/DPK_9.png" width="200"/> |
+
 
 Again, see Jake Garvings' [DeepPosekit](https://github.com/jgraving/DeepPoseKit) documentation for the model-specific setting in the [DeepLabCut](http://jakegraving.com/DeepPoseKit/html/deepposekit/models/DeepLabCut.html#references), [StackedDenseNet](http://jakegraving.com/DeepPoseKit/html/deepposekit/models/StackedDenseNet.html#references), [StackedHourglass](http://jakegraving.com/DeepPoseKit/html/deepposekit/models/StackedHourglass.html#references), and [LEAP](http://jakegraving.com/DeepPoseKit/html/deepposekit/models/LEAP.html#references). 
 
