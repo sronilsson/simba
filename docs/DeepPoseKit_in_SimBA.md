@@ -53,13 +53,19 @@ After the annotations are complete, press `Esc` to save your annotations.
 
 ## Step 3: Training DeepPoseKit models in SimBA
 
-For documentation on the different neural network parameters and architectures available, see Jake Garvings' [DeepPosekit](https://github.com/jgraving/DeepPoseKit) documentation. In SimBA, the the entry boxes defaults to the DeepPoseKit deafults.
-
-Click on the 
+Click on the `Train model` tab and ou should see the following window.
 
 ![](https://github.com/sgoldenlab/simba/blob/master/images/DPK_5.png "DPK_5")
 
+For documentation on the different parameters and network architectures available, see Jake Garvings' [DeepPosekit](https://github.com/jgraving/DeepPoseKit) documentation. In SimBA, most of the entry boxes and user-defined settings defaults to the DeepPoseKit suggested defults. To chooose the neural network archictecture, click on the `NN_architecture` drop-down menu and you should see the networks available in DeepPoseKit:
+
 ![](https://github.com/sgoldenlab/simba/blob/master/images/DPK_6.png "DPK_6")
+
+To access architecture-specific settings, click on the `Model Settings` button. Depending on the chosen archiceture, you should see one of the three possible menus:
+
+<img src="https://github.com/sgoldenlab/simba/blob/master/images/DPK_7.png" width="200"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/DPK_8.png" width="200"/> <img src="https://github.com/sgoldenlab/simba/blob/master/images/DPK_9.png" width="200"/>
+
+Again, see Jake Garvings' [DeepPosekit](https://github.com/jgraving/DeepPoseKit) documentation for the model-specific setting in the [DeepLabCut](http://jakegraving.com/DeepPoseKit/html/deepposekit/models/DeepLabCut.html#references), [StackedDenseNet](http://jakegraving.com/DeepPoseKit/html/deepposekit/models/StackedDenseNet.html#references), [StackedHourglass](http://jakegraving.com/DeepPoseKit/html/deepposekit/models/StackedHourglass.html#references), and [LEAP](http://jakegraving.com/DeepPoseKit/html/deepposekit/models/LEAP.html#references). 
 
 ## Step 4: Track body-part coordinates using DeepPoseKit in SimBA
 
