@@ -27,7 +27,7 @@ Next to the SimBA project.in file, click on browse and select your SimBA project
 You DeepPoseKit project will be generated within the chosen SimBA project. If you navigate to you SimBA project, and look within the `project_folder\logs\measures\dpk` folder, you should see a folder named after your chosen `Project Name`. The inside if this folder will contain several subfolders reminiscent of the sub-folders created by other packages:
 ![](https://github.com/sgoldenlab/simba/blob/master/images/DPK_2.png "dir_info")
 
-Go ahead and close the `Create DeepPoseKit project` window.  
+Go ahead and close the `Create DeepPoseKit project` window. 
 
 # Part 2: Loading a DeepPoseKit project in SimBA
 
