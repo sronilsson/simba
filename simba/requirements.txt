@@ -11,17 +11,17 @@ Pillow == 5.4.1
 # ROI_analysis_2.py: 6,7
 # ROI_freehand_draw_3.py: 6
 # ROI_plot.py: 6,7
-# Shapely == 1.6.4.post2
+Shapely == 1.7
 
 # SimBA.py: 8
 # dlc_change_yamlfile.py: 5
-deeplabcut == 2.0.9
+# deeplabcut == 2.0.9
 
 # dpk_script\Predict_new_video.py: 7
 # dpk_script\annotator.py: 4
 # dpk_script\create_annotation_set.py: 5,6
 # dpk_script\train_model.py: 17
-deepposekit == 0.3.5
+# deepposekit == 0.3.5
 
 # train_model\train_model_user_defined.py: 8,30
 # train_model_2.py: 7,29
