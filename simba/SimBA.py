@@ -16,6 +16,7 @@ from tkinter import tix
 import subprocess
 import platform
 import shutil
+from tabulate import tabulate
 import datetime
 from dlc_change_yamlfile import select_numfram2pick,updateiteration,update_init_weight,generatetempyaml,generatetempyaml_multi
 from extract_features_wo_targets import extract_features_wotarget
@@ -54,6 +55,7 @@ from ROI_draw_defined import *
 from ROI_multiply import *
 from ROI_reset import *
 from ROI_add_to_features import *
+from ROI_process_movement import *
 from plot_heatmap import plotHeatMap
 import warnings
 from outlier_scripts.movement.correct_devs_mov_16bp import dev_move_16
@@ -86,8 +88,8 @@ from define_new_pose_config import define_new_pose_configuration
 #from dpk_script.train_model import trainDPKmodel
 #from dpk_script.Predict_new_video import predictnewvideoDPK
 #from dpk_script.Visualize_video import visualizeDPK
-from reset_poseConfig import reset_DiagramSettings
-
+#from reset_poseConfig import reset_DiagramSettings
+import threading
 simBA_version = 1.1
 
 
@@ -155,10 +157,8 @@ class processvid_title(Frame):
         Frame.__init__(self,master=parent,**kw)
         self.lblName = Label(self, text= 'Video Name',fg=str(self.color),width=widths,font=("Helvetica",10,'bold'))
         self.lblName.grid(row=0,column=0)
-        self.lblName2 = Label(self,width =4)
-        self.lblName2.grid(row=0, column=1)
         self.lblName3 = Label(self, text='Start Time',width = 13,font=("Helvetica",10,'bold'))
-        self.lblName3.grid(row=0, column=2)
+        self.lblName3.grid(row=0, column=1,columnspan=2)
         self.lblName4 = Label(self, text='End Time',width = 15,font=("Helvetica",10,'bold'))
         self.lblName4.grid(row=0, column=3)
         self.shorten = IntVar()
@@ -188,8 +188,8 @@ class processvideotable(Frame):
         self.filename = os.path.join(dirname,fileDescription)
         self.outputdir = outputdir
         Frame.__init__(self,master=parent,**kw)
-        self.lblName = Label(self, text=fileDescription,fg=str(self.color),width= widths)
-        self.lblName.grid(row=0,column=0)
+        self.lblName = Label(self, text=fileDescription,fg=str(self.color),width= widths,anchor=W)
+        self.lblName.grid(row=0,column=0,sticky=W)
         self.btnFind = Button(self, text="Crop",command=self.cropvid)
         self.btnFind.grid(row=0,column=1)
         self.trimstart = Entry(self)
@@ -272,16 +272,20 @@ class processvid_menu:
 
         tableframe = LabelFrame(scroll)
 
-        # table title
-        self.title = processvid_title(tableframe, str(len(maxname)),shortenbox=self.selectall_shorten,downsambox=self.selectall_downsample,graybox=self.selectall_grayscale,framebox=self.selectall_addframe,clahebox=self.selectall_clahe)
-        self.title.grid(row=0,sticky= W)
+            # table title
+        self.title = processvid_title(tableframe, str(len(maxname)), shortenbox=self.selectall_shorten,
+                                      downsambox=self.selectall_downsample, graybox=self.selectall_grayscale,
+                                      framebox=self.selectall_addframe, clahebox=self.selectall_clahe)
 
         #### loop for tables######
         for i in range(len(self.filesFound)):
             self.row.append(processvideotable(tableframe,str(self.filesFound[i]), str(len(maxname)),self.videofolder,self.outputdir))
             self.row[i].grid(row=i+1, sticky=W)
 
-        but = Button(scroll,text='Execute',command =self.execute_processvideo,font=('Times',12,'bold'),fg='navy')
+
+        self.title.grid(row=0, sticky=W)
+
+        but = Button(scroll,text='Execute',command = lambda: threading.Thread(target=self.execute_processvideo).start(),font=('Times',12,'bold'),fg='navy')
         but.grid(row=2)
 
         tableframe.grid(row=1)
@@ -2332,6 +2336,27 @@ class changefps:
         label_fps.grid(row=1,sticky=W)
         button_fps.grid(row=2)
 
+class changefpsmulti:
+    def __init__(self):
+        multifpsmenu = Toplevel()
+        multifpsmenu.minsize(400, 200)
+        multifpsmenu.wm_title("Change frame rate of videos in a folder")
+
+        # videopath
+        videopath = FolderSelect(multifpsmenu, "Folder path", title='Select folder with videos')
+
+        # fps
+        label_fps = Entry_Box(multifpsmenu, 'Output fps', '10')
+
+        # button
+        button_fps = Button(multifpsmenu, text='Convert',
+                            command=lambda: changefps_multivideo(videopath.folder_path, label_fps.entry_get))
+        # organize
+        videopath.grid(row=0, sticky=W)
+        label_fps.grid(row=1, sticky=W)
+        button_fps.grid(row=2)
+
+
 class extract_seqframe:
 
     def __init__(self):
@@ -2947,7 +2972,6 @@ class loadprojectini:
         self.roi_draw.grid(row=0, column=2, sticky=N)
         analyzeROI.grid(row=0)
 
-
         ###plot roi
         self.roi_draw1 = LabelFrame(tab6, text='Visualize ROI')
         # button
@@ -2955,6 +2979,15 @@ class loadprojectini:
         ##organize
         self.roi_draw1.grid(row=0, column=3, sticky=N)
         visualizeROI.grid(row=0)
+
+        #processmovementinroi (duplicate)
+        processmovementdupLabel = LabelFrame(tab6,text='Analyze distances/velocity')
+        button_process_movement1 = Button(processmovementdupLabel, text='Analyze distances/velocity',
+                                         command=lambda: self.roi_settings('Analyze distances/velocity',
+                                                                           'processmovement'))
+        #organize
+        processmovementdupLabel.grid(row=0,column=4,sticky=N)
+        button_process_movement1.grid(row=0)
 
 
         #outlier correction
@@ -2967,7 +3000,7 @@ class loadprojectini:
 
         #extract features
         label_extractfeatures = LabelFrame(tab5,text='Extract Features',font=("Helvetica",12,'bold'),pady=5,padx=5,fg='black')
-        button_extractfeatures = Button(label_extractfeatures,text='Extract Features',command=self.extractfeatures)
+        button_extractfeatures = Button(label_extractfeatures,text='Extract Features',command = lambda: threading.Thread(target=self.extractfeatures).start())
         #roiappend
         appendDf = Button(label_extractfeatures, text='Append ROI data to features', command=self.appendroisettings)
         appendDf.grid(row=1,pady=10)
@@ -2979,8 +3012,8 @@ class loadprojectini:
         #train machine model
         label_trainmachinemodel = LabelFrame(tab8,text='Train Machine Models',font=("Helvetica",12,'bold'),padx=5,pady=5,fg='black')
         button_trainmachinesettings = Button(label_trainmachinemodel,text='Settings',command=self.trainmachinemodelsetting)
-        button_trainmachinemodel = Button(label_trainmachinemodel,text='Train single model from global environment',fg='blue',command=self.trainsinglemodel)
-        button_train_multimodel = Button(label_trainmachinemodel, text='Train multiple models, one for each saved settings',fg='green',command=self.trainmultimodel)
+        button_trainmachinemodel = Button(label_trainmachinemodel,text='Train single model from global environment',fg='blue',command = lambda: threading.Thread(target=self.trainsinglemodel).start())
+        button_train_multimodel = Button(label_trainmachinemodel, text='Train multiple models, one for each saved settings',fg='green',command = lambda: threading.Thread(target=self.trainmultimodel).start())
 
         ##Single classifier valid
         label_model_validation = LabelFrame(tab9, text='Validate Model on Single Video', pady=5, padx=5,
@@ -3334,7 +3367,7 @@ class loadprojectini:
         elif appendornot =='not append':
             roiAnalysis(configini,'outlier_corrected_movement_location')
         elif appendornot == 'processmovement':
-            analyze_process_movement(configini)
+            ROI_process_movement(configini)
         else:
             roiAnalysis(configini,'features_extracted')
 
@@ -3525,7 +3558,38 @@ class loadprojectini:
         analyze_process_severity(self.projectconfigini,self.severityscale.entry_get)
 
     def analyzedatalog(self):
-        analyze_process_data_log(self.projectconfigini)
+        # Popup window
+        datalogmenu = Toplevel()
+        datalogmenu.minsize(400, 400)
+        datalogmenu.wm_title("Analyze process log settings")
+
+        dlmlabel = LabelFrame(datalogmenu)
+
+        #use for loop to create intvar
+        var=[]
+        for i in range(7):
+            var.append(IntVar())
+
+        #use loop to create checkbox?
+        checkbox = [0]*7
+        titlebox =['events','sum duration (s)','mean duration (s)','median duration (s)','first occurance (s)','mean interval (s)','median interval (s)']
+        for i in range(7):
+            checkbox[i] = Checkbutton(dlmlabel,text=titlebox[i],variable=var[i])
+            checkbox[i].grid(row=i,sticky=W)
+        #organize
+        dlmlabel.grid(row=0)
+        button1 = Button(dlmlabel,text='Analyze',command=lambda:self.findDatalogList(titlebox,var))
+        button1.grid(row=10)
+
+    def findDatalogList(self,titleBox,Var):
+        finallist = []
+        for index,i in enumerate(Var):
+            if i.get()==0:
+                finallist.append(titleBox[index])
+
+        #run analyze
+        analyze_process_data_log(self.projectconfigini,finallist)
+
 
     def runrfmodel(self):
         rfmodel(self.projectconfigini)
@@ -4257,21 +4321,24 @@ class App(object):
         labellingtoolmenu.add_command(label='labelme', command=lambda: subprocess.call(["labelme"]))
         #third menu organize
         thirdMenu.add_cascade(label='DeepLabCut', menu=dlcmenu)
-        # thirdMenu.add_command(label='YOLOv3', command=lambda: print('coming soon'))
-        # thirdMenu.add_command(label='Mask RCNN', command=lambda: print('coming soon'))
         thirdMenu.add_cascade(label='DeepPoseKit', menu=dpkmenu)
         thirdMenu.add_command(label='LEAP', command=lambda: print('coming soon'))
         thirdMenu.add_cascade(label='Labelling tools', menu=labellingtoolmenu)
 
         #fifth menu
         fifthMenu = Menu(menu)
+        #changefpsmenu
+        fpsMenu = Menu(fifthMenu)
+        fpsMenu.add_command(label='Change fps for single video', command=changefps)
+        fpsMenu.add_command(label='Change fps for multiple videos',command=changefpsmulti)
         menu.add_cascade(label='Tools',menu=fifthMenu)
         fifthMenu.add_command(label='Clip videos',command=shorten_video)
         fifthMenu.add_command(label='Crop videos',command=crop_video)
         fifthMenu.add_command(label='Multi-crop',command=multicropmenu)
         fifthMenu.add_command(label='Downsample videos',command=video_downsample)
         fifthMenu.add_command(label='Get mm/ppx',command = get_coordinates_from_video)
-        fifthMenu.add_command(label='Change fps',command =changefps)
+        fifthMenu.add_cascade(label='Change fps',menu =fpsMenu)
+        #changefpsmenu organize
 
         changeformatMenu = Menu(fifthMenu)
         changeformatMenu.add_command(label='Change image file formats',command=change_imageformat)
@@ -4347,15 +4414,17 @@ class SplashScreen:
 if __name__ == '__main__':
     root = Tk()
     root.overrideredirect(True)
-    # progressbar = ttk.Progressbar(orient=HORIZONTAL, length=5000, mode='determinate')
-    # progressbar.pack(side="bottom")
     app = SplashScreen(root)
-    # progressbar.start()
     root.after(1000, root.destroy)
     root.mainloop()
 
 
 app = App()
 print('Welcome fellow scientists :)' + '\n' + 'SimBA version ' + str(simBA_version))
+print('\n')
+print(tabulate([['Region of Interest support (ROI Module)'], ['DeepPoseKit support (DPK Module)'], ['Flexible Annotation Module'], ['Interactive thresholding'], ['Heatmap visualizations'], ['Extended validation tools'], ['Multi-crop'],['...many bug fixes']], headers=['March 2020 Updates/Fixes'], tablefmt='fancy_grid'))
+
+
+
 maincwd=os.getcwd()
 app.root.mainloop()
