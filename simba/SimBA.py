@@ -88,7 +88,7 @@ from define_new_pose_config import define_new_pose_configuration
 #from dpk_script.train_model import trainDPKmodel
 #from dpk_script.Predict_new_video import predictnewvideoDPK
 #from dpk_script.Visualize_video import visualizeDPK
-#from reset_poseConfig import reset_DiagramSettings
+from reset_poseConfig import reset_DiagramSettings
 import threading
 simBA_version = 1.1
 
