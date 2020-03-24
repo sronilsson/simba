@@ -20,7 +20,7 @@
 
 2. You are running Python 3.6.0 (or python 3.6.10 in conda). 
 
-- **SimBA won't launch - there's an error, some complaint about Shapely**
+- **SimBA won't launch - there's an error, with some complaint about Shapely**
 
 Check out these issue threads for potential fixes:
 
