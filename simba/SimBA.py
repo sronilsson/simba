@@ -5,7 +5,7 @@ import os
 import time
 import subprocess
 import itertools
-#import deeplabcut
+# import deeplabcut
 import csv
 import sys
 from tkinter import *
@@ -78,15 +78,16 @@ from features_scripts.extract_features_7bp import extract_features_wotarget_7
 from features_scripts.extract_features_4bp import extract_features_wotarget_4
 from features_scripts.extract_features_user_defined import extract_features_wotarget_user_defined
 from sklearn_plot_scripts.plot_sklearn_results_2 import plotsklearnresult
-from dpk_create_project_ini import write_dpkfile
+
 from drop_bp_cords import define_bp_drop_down
 from drop_bp_cords import bodypartConfSchematic
 from define_new_pose_config import define_new_pose_configuration
-#from dpk_script.create_annotation_set import createAnnotationSet
-#from dpk_script.annotator import dpkAnnotator
-#from dpk_script.train_model import trainDPKmodel
-#from dpk_script.Predict_new_video import predictnewvideoDPK
-#from dpk_script.Visualize_video import visualizeDPK
+# from dpk_create_project_ini import write_dpkfile
+# from dpk_script.create_annotation_set import createAnnotationSet
+# from dpk_script.annotator import dpkAnnotator
+# from dpk_script.train_model import trainDPKmodel
+# from dpk_script.Predict_new_video import predictnewvideoDPK
+# from dpk_script.Visualize_video import visualizeDPK
 from reset_poseConfig import reset_DiagramSettings
 from plot_threshold import plot_threshold
 import threading
@@ -3786,9 +3787,11 @@ class trainmachinemodel_settings:
     def __init__(self,inifile):
         self.configini = str(inifile)
         # Popup window
-        trainmms = Toplevel()
-        trainmms.minsize(400, 400)
-        trainmms.wm_title("Machine model settings")
+        trainmmsettings = Toplevel()
+        trainmmsettings.minsize(400, 400)
+        trainmmsettings.wm_title("Machine model settings")
+
+        trainmms = Scrollable(trainmmsettings)
 
         #load metadata
         load_data_frame = LabelFrame(trainmms, text='Load Metadata',font=('Helvetica',10,'bold'), pady=5, padx=5)
@@ -3937,6 +3940,8 @@ class trainmachinemodel_settings:
         button_settings_to_ini.grid(row=6,pady=5)
         button_save_meta.grid(row=7)
         button_remove_meta.grid(row=8,pady=5)
+
+        trainmms.update()
 
     def clearcache(self):
         configs_dir = os.path.join(os.path.dirname(self.configini),'configs')
