@@ -187,7 +187,6 @@ def trainmodel2(inifile):
         features.pop(currentModelName).values
     class_names = class_names = ['Not_' + classifierName, classifierName]
     feature_list = list(features)
-    features.to_csv('test.csv')
     print('# of features in dataset: ' + str(len(feature_list)))
 
     # IF SET BY USER - PERFORM UNDERSAMPLING AND OVERSAMPLING IF SET BY USER
