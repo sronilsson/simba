@@ -162,7 +162,6 @@ def trainmodel2(inifile):
             currentFn = os.path.join(data_folder, i)
             df = pd.read_csv(currentFn, index_col=0)
             features = features.append(df, ignore_index=True)
-    features.to_csv('test2.csv')
     features = features.loc[:, ~features.columns.str.contains('^Unnamed')]
     features = features.drop(["scorer"], axis=1, errors='ignore')
     totalTargetframes = features[classifierName].sum()
