@@ -28,7 +28,7 @@ https://github.com/sgoldenlab/simba/issues/12
 
 https://github.com/sgoldenlab/simba/issues/11#issuecomment-596805732
 
-> ** SimBA won't start, and there is GPU related errors such as "ImportError: Could not find 'cudart64_100.dll'.
+- ** SimBA won't start, and there is GPU related errors such as "ImportError: Could not find 'cudart64_100.dll'.
 Make sure
 
 1. CUDA 10 is installed - https://developer.nvidia.com/cuda-10.0-download-archive
