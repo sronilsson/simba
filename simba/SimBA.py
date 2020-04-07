@@ -5,7 +5,7 @@ import os
 import time
 import subprocess
 import itertools
-#import deeplabcut
+import deeplabcut
 import csv
 import sys
 from tkinter import *
@@ -63,6 +63,7 @@ from outlier_scripts.movement.correct_devs_mov_user_defined import dev_move_user
 from outlier_scripts.location.correct_devs_loc_user_defined import dev_loc_user_defined
 from outlier_scripts.movement.correct_devs_mov_14bp import dev_move_14
 from outlier_scripts.location.correct_devs_loc_14bp import dev_loc_14
+from outlier_scripts.skip_outlierCorrection import skip_outlier_c
 # from outlier_scripts.movement.correct_devs_mov_9bp import dev_move_9
 # from outlier_scripts.movement.correct_devs_mov_8bp import dev_move_8
 # from outlier_scripts.location.correct_devs_loc_8bp import dev_loc_8
@@ -82,12 +83,12 @@ from sklearn_plot_scripts.plot_sklearn_results_2 import plotsklearnresult
 from drop_bp_cords import define_bp_drop_down
 from drop_bp_cords import bodypartConfSchematic
 from define_new_pose_config import define_new_pose_configuration
-#from dpk_create_project_ini import write_dpkfile
-#from dpk_script.create_annotation_set import createAnnotationSet
-#from dpk_script.annotator import dpkAnnotator
-#from dpk_script.train_model import trainDPKmodel
-#from dpk_script.Predict_new_video import predictnewvideoDPK
-#from dpk_script.Visualize_video import visualizeDPK
+from dpk_create_project_ini import write_dpkfile
+from dpk_script.create_annotation_set import createAnnotationSet
+from dpk_script.annotator import dpkAnnotator
+from dpk_script.train_model import trainDPKmodel
+from dpk_script.Predict_new_video import predictnewvideoDPK
+from dpk_script.Visualize_video import visualizeDPK
 from reset_poseConfig import reset_DiagramSettings
 from plot_threshold import plot_threshold
 from merge_frames_movie import mergeframesPlot
@@ -466,15 +467,11 @@ class processvid_menu:
 class batch_processvideo: ##pre process video first menu (ask for input and output folder)
 
     def __init__(self):
-        self.croplist = []
-        self.shortenlist = []
-        self.downsamplelist =[]
-        self.grayscalelist = []
-        self.superimposelist = []
         # Popup window
         batchprocess = Toplevel()
         batchprocess.minsize(400, 200)
         batchprocess.wm_title("Batch process video")
+
 
         #Video Selection Tab
         label_videoselection = LabelFrame(batchprocess,text='Folder selection',font='bold',padx=5,pady=5)
@@ -502,6 +499,7 @@ class batch_processvideo: ##pre process video first menu (ask for input and outp
             print('Please select a folder with videos')
         else:
             print('Please select folder with videos and the output directory')
+
 
 class outlier_settings:
     def __init__(self,configini):
@@ -846,9 +844,9 @@ def hxtScrollbar(master):
         Use canvas to create a window, where window = frame
         Bind the frame to the canvas
         '''
-
-        acanvas = Canvas(master, borderwidth=0, background="#ffffff")
-        frame = Frame(acanvas, background="#ffffff")
+        bg = master.cget("background")
+        acanvas = Canvas(master, borderwidth=0, background=bg)
+        frame = Frame(acanvas, background=bg)
         vsb = Scrollbar(master, orient="vertical", command=acanvas.yview)
         vsb2 = Scrollbar(master, orient='horizontal', command=acanvas.xview)
         acanvas.configure(yscrollcommand=vsb.set)
@@ -860,7 +858,7 @@ def hxtScrollbar(master):
         acanvas.create_window((10, 10), window=frame, anchor="nw")
 
         # bind the frame to the canvas
-        frame.bind("<Configure>", lambda event, canvas=acanvas: onFrameConfigure(acanvas))
+        acanvas.bind("<Configure>", lambda event, canvas=acanvas: onFrameConfigure(acanvas))
         acanvas.bind('<Enter>', lambda event: bindToMousewheel(event, acanvas))
         acanvas.bind('<Leave>', lambda event: unbindToMousewheel(event,acanvas))
         return frame
@@ -884,6 +882,15 @@ class video_info_table:
             if i.endswith(('.avi','.mp4','.mov','flv')):
                 self.filesFound.append(i)
 
+        # if csv exist, find the difference and append
+        if os.path.exists(video_info_csv):
+            df = pd.read_csv(video_info_csv)
+            videodf = df['Video'].to_list()
+            videodf = [s +'.mp4' for s in videodf]
+            videodf = list(set(videodf) - set(self.filesFound))
+            self.filesFound += videodf
+        print(self.filesFound)
+        ##GUI
         self.tkintertable = Toplevel()
         self.tkintertable.minsize(1000, 500)
         self.tkintertable.wm_title("Video Info")
@@ -902,18 +909,25 @@ class video_info_table:
             self.table_col.append(newcolumn(self.myframe,self.filesFound,self.col_width[i]))
             self.table_col[i].grid(row=0,column=i, sticky=W)
 
-
         ###set values for base####
         count = 0
         for i in self.filesFound:
-            vid= cv2.VideoCapture(os.path.join(str(self.config_videofolders),str(i)))
-            #print((os.path.join(str(self.config_videofolders),str(i))))
-            self.table_col[0].setvariable(count,str(count)+'.')
-            self.table_col[1].setvariable(count,i)
-            self.table_col[2].setvariable(count, int(vid.get(cv2.CAP_PROP_FPS)))
-            self.table_col[3].setvariable(count, int(vid.get(cv2.CAP_PROP_FRAME_WIDTH)))
-            self.table_col[4].setvariable(count, int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT)))
-            self.table_col[5].setvariable(count,config_distancemm)
+            currvid= os.path.join(str(self.config_videofolders),str(i))
+            if os.path.exists(currvid) or i==0:
+                vid= cv2.VideoCapture(currvid)
+                self.table_col[0].setvariable(count,str(count)+'.')
+                self.table_col[1].setvariable(count,i)
+                self.table_col[2].setvariable(count, int(vid.get(cv2.CAP_PROP_FPS)))
+                self.table_col[3].setvariable(count, int(vid.get(cv2.CAP_PROP_FRAME_WIDTH)))
+                self.table_col[4].setvariable(count, int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT)))
+                self.table_col[5].setvariable(count,config_distancemm)
+            else:
+                self.table_col[0].setvariable(count, str(count) + '.')
+                self.table_col[1].setvariable(count, i)
+                self.table_col[2].setvariable(count, int(df.loc[df['Video']==i.split('.')[0]].values.tolist()[0][1]))
+                self.table_col[3].setvariable(count, int(df.loc[df['Video']==i.split('.')[0]].values.tolist()[0][2]))
+                self.table_col[4].setvariable(count, int(df.loc[df['Video']==i.split('.')[0]].values.tolist()[0][3]))
+                self.table_col[5].setvariable(count, config_distancemm)
             count+=1
 
         #set title
@@ -1033,9 +1047,20 @@ class video_info_table:
         df=df.reset_index()
         df=df.drop(['index'],axis=1)
         df=df.drop(['level_0'],axis=1)
+
         logfolder=str(os.path.dirname(self.configFile))+'\\logs\\'
         csv_filename = 'video_info.csv'
         output=logfolder+csv_filename
+        print(df)
+        # # get difference
+        # if os.path.exists(output):
+        #     inidf = pd.read_csv(output)
+        #     differencedf = inidf.merge(df, how = 'outer' ,indicator=True).loc[lambda x : x['_merge']=='right_only']
+        #     differencedf = differencedf.drop(['_merge'], axis=1)
+        #     finaldf = pd.concat([inidf,differencedf])
+        # else:
+        #     finaldf=df
+
         df.to_csv(str(output),index=False)
         print(os.path.dirname(output),'generated.')
 
@@ -1149,20 +1174,35 @@ class crop_video:
     def __init__(self):
         # Popup window
         cropvideo = Toplevel()
-        cropvideo.minsize(200, 200)
+        cropvideo.minsize(300, 300)
         cropvideo.wm_title("Crop Video")
 
-
-        # Video Path
+        # Normal crop
         label_cropvideo = LabelFrame(cropvideo,text='Crop Video',font='bold',padx=5,pady=5)
         self.videopath1selected = FileSelect(label_cropvideo,"Video path",title='Select a video file')
         # CropVideo
         button_cropvid = Button(label_cropvideo, text='Crop Video', command=lambda:cropvid(self.videopath1selected.file_path))
 
+        # fixed crop
+        label_videoselection = LabelFrame(cropvideo, text='Fixed coordinates crop for multiple videos', font='bold', padx=5, pady=5)
+        self.folder1Select = FolderSelect(label_videoselection, 'Video directory:', title='Select Folder with videos')
+        # output video
+        self.outputfolder = FolderSelect(label_videoselection, 'Output directory:',
+                                         title='Select a folder for your output videos')
+
+        # create list of all videos in the videos folder
+        button_cL = Button(label_videoselection, text='Confirm', command=lambda: youOnlyCropOnce(self.folder1Select.folder_path,self.outputfolder.folder_path))
+
+
         #organize
         label_cropvideo.grid(row=0,sticky=W)
         self.videopath1selected.grid(row=0,sticky=W)
         button_cropvid.grid(row=1,sticky=W,pady=10)
+        #fixedcrop
+        label_videoselection.grid(row=1,sticky=W,pady=10,padx=5)
+        self.folder1Select.grid(row=0,sticky=W,pady=5)
+        self.outputfolder.grid(row=1,sticky=W,pady=5)
+        button_cL.grid(row=2,sticky=W,pady=5)
 
 class create_project_DLC:
 
@@ -3002,7 +3042,7 @@ class loadprojectini:
         label_setscale = LabelFrame(tab3,text='Video parameters (fps, resolution, ppx/mm, etc.)', font=("Helvetica",12,'bold'), pady=5,padx=5,fg='black')
         self.distanceinmm = Entry_Box(label_setscale, 'Known distance (mm)', '18')
         button_setdistanceinmm = Button(label_setscale, text='Autopopulate table',command=lambda: self.set_distancemm(self.distanceinmm.entry_get))
-        button_setscale = Button(label_setscale,text='Set video parameters',command=self.setvideoparameter)
+        button_setscale = Button(label_setscale,text='Set video parameters',command=lambda:video_info_table(self.projectconfigini))
 
         #ROI
         ### define roi
@@ -3061,6 +3101,7 @@ class loadprojectini:
         label_link = Label(label_outliercorrection,text='[link to description]',cursor='hand2',font='Verdana 10 underline')
         button_settings_outlier = Button(label_outliercorrection,text='Settings',command = lambda: outlier_settings(self.projectconfigini))
         button_outliercorrection = Button(label_outliercorrection,text='Run outlier correction',command=self.correct_outlier)
+        button_skipOC = Button(label_outliercorrection,text='Skip outlier correction (CAUTION)',fg='red', command=lambda:skip_outlier_c(self.projectconfigini))
 
         label_link.bind("<Button-1>",lambda e: self.callback('https://github.com/sgoldenlab/simba/blob/master/misc/Outlier_settings.pdf'))
 
@@ -3078,7 +3119,7 @@ class loadprojectini:
         #train machine model
         label_trainmachinemodel = LabelFrame(tab8,text='Train Machine Models',font=("Helvetica",12,'bold'),padx=5,pady=5,fg='black')
         button_trainmachinesettings = Button(label_trainmachinemodel,text='Settings',command=self.trainmachinemodelsetting)
-        button_trainmachinemodel = Button(label_trainmachinemodel,text='Train single model from global environment',fg='blue',command = lambda: threading.Thread(target=self.trainsinglemodel).start())
+        button_trainmachinemodel = Button(label_trainmachinemodel,text='Train single model from global environment',fg='blue',command = lambda: threading.Thread(target=trainmodel2(self.projectconfigini)).start())
         button_train_multimodel = Button(label_trainmachinemodel, text='Train multiple models, one for each saved settings',fg='green',command = lambda: threading.Thread(target=self.trainmultimodel).start())
 
         ##Single classifier valid
@@ -3141,6 +3182,8 @@ class loadprojectini:
         confirmAnimals = Button(label_pathplot,text='Confirm',command=lambda:self.tracknoofanimal(label_pathplot,bp_set))
         self.plotsvvar = IntVar()
         checkboxplotseverity = Checkbutton(label_pathplot,text='plot_severity',variable=self.plotsvvar)
+        self.severityTargetpp = DropDownMenu(label_pathplot, 'Target', targetlist, '15')
+        self.severityTargetpp.setChoices(targetlist[(config.get('SML settings', 'target_name_' + str(1)))])
         button_pathplot = Button(label_pathplot,text='Generate Path plot',command=self.pathplotcommand)
 
         CreateToolTip(self.Deque_points,'Maximum number of path lines in deque list')
@@ -3239,6 +3282,7 @@ class loadprojectini:
         label_link.grid(row=0,sticky=W)
         button_settings_outlier.grid(row=1,sticky=W)
         button_outliercorrection.grid(row=3,sticky=W)
+        button_skipOC.grid(row=4,sticky=W,pady=5)
 
         label_extractfeatures.grid(row=4,sticky=W)
         button_extractfeatures.grid(row=0,sticky=W)
@@ -3297,7 +3341,8 @@ class loadprojectini:
         self.noofAnimal.grid(row=3,sticky=W)
         confirmAnimals.grid(row=3,column=1,sticky=W)
         checkboxplotseverity.grid(row=7,sticky=W)
-        button_pathplot.grid(row=8,sticky=W)
+        self.severityTargetpp.grid(row=8,sticky=W)
+        button_pathplot.grid(row=9,sticky=W)
         #distance
         label_distanceplot.grid(row=3,sticky=W)
         self.poi1.grid(row=1,sticky=W)
@@ -3718,8 +3763,6 @@ class loadprojectini:
     def trainmultimodel(self):
         train_multimodel(self.projectconfigini)
 
-    def trainsinglemodel(self):
-        trainmodel2(self.projectconfigini)
 
     def trainmachinemodelsetting(self):
         trainmachinemodel_settings(self.projectconfigini)
@@ -3748,8 +3791,7 @@ class loadprojectini:
         if pose_estimation_body_parts == 'user_defined':
             extract_features_wotarget_user_defined(self.projectconfigini)
 
-    def setvideoparameter(self):
-        video_info_table(self.projectconfigini)
+
 
     def importframefolder(self):
         if (self.projectconfigini!='No file selected') and (self.frame_folder.folder_path != 'No folder selected'):
@@ -3838,6 +3880,7 @@ class loadprojectini:
         config.set('Path plot settings', 'severity_brackets', self.severity_brackets.entry_get)
         config.set('Path plot settings', 'animal_1_bp', self.Bodyparts1.getChoices())
         config.set('Path plot settings', 'animal_2_bp', self.Bodyparts2.getChoices())
+        config.set('Path plot settings','severity_target',self.severityTargetpp.getChoices())
 
         if self.plotsvvar.get()==1:
             config.set('Path plot settings', 'plot_severity', 'yes')
