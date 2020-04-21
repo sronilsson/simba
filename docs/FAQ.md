@@ -28,14 +28,27 @@ https://github.com/sgoldenlab/simba/issues/12
 
 https://github.com/sgoldenlab/simba/issues/11#issuecomment-596805732
 
-- ** SimBA won't start, and there is GPU related errors such as "ImportError: Could not find 'cudart64_100.dll'.
-Make sure
+- **SimBA won't start, and there is GPU related errors such as "ImportError: Could not find 'cudart64_100.dll'.**
+
+Make sure;
 
 1. CUDA 10 is installed - https://developer.nvidia.com/cuda-10.0-download-archive
 2. cuDNN 7.4.2 for CUDA 10 is installed - https://developer.nvidia.com/rdp/cudnn-archive
 3. Tensorflow-gpu 1.14.0 is installed, run: pip install tensorflow-gpu==1.14.0
 4. Tensorflow (without GPU support) is *not* installed: run pip uninstall tensorflow
 5. Protobuf 3.6.0 is installed: pip install protobuf==3.6.0
+
+
+- **I get an error when launching the ROI interface - it is complaining about `ValueError: cannot set WRITEABLE flag to True of this array`. It may also have seen `Missing optional dependency 'tables` **
+
+Make sure you are running a later version of pytables(>= version 3.51). Also make sure you have numpy 1.18.1 and pandas 0.25.3 installed. To be sure of this, run:
+
+`pip install tables --upgrade` or `pip install tables 3.5.1` or `pip install tables 3.6.1`
+
+`pip install pandas 0.25.3'
+
+`pip install pandas==0.25.3`
+
 
 
 
