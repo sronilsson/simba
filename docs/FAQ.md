@@ -43,11 +43,11 @@ Make sure;
 
 Make sure you are running a later version of pytables(>= version 3.51). Also make sure you have numpy 1.18.1 and pandas 0.25.3 installed. To be sure of this, run:
 
-`pip install tables --upgrade` or `pip install tables 3.5.1`. Pytables 3.5.1 may not be available in conda so do a `pip install tables 3.6.1`. 
+`pip install tables --upgrade` or `pip install tables==3.5.1`. Pytables 3.5.1 may not be available in conda so do a `pip install tables==3.6.1`. 
 
-`pip install pandas 0.25.3'
+`pip install pandas==0.25.3'
 
-`pip install pandas==0.25.3`
+`pip install numpy==1.18.1`
 
 
 
