@@ -77,13 +77,16 @@ def mergeframesPlot(configini,inputList):
     toDelList = []
     for folder in range(len(dirsList)):
         imageCounts = []
-        currFolders = [item[folder] for item in dirsList]
+        try:
+            currFolders = [item[folder] for item in dirsList]
+        except IndexError:
+            currFolders = dirsList[folder]
         for category in currFolders:
             imageCounts.append(len(glob.glob(category + '/*.png')))
         checkIfSame = all(x == imageCounts[0] for x in imageCounts)
         if (checkIfSame == False) or (0 in imageCounts) or (None in imageCounts):
             if os.path.basename(category) not in toDelList:
-            toDelList.append(os.path.basename(category))
+                toDelList.append(os.path.basename(category))
 
     # ### check that all folders contain each video
     videoPathList = []
