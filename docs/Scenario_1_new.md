@@ -2,7 +2,7 @@
 
 To faciliate the initial use of SimBA, we provide several use scenarios. We have created these scenarios around a hypothetical experiment that take a user from initial use (completely new start) all the way through analyzing a complete experiment and then adding additional experimental datasets to an initial project.
 
-All scenarios assume that the videos have been [pre-processed](https://github.com/sgoldenlab/simba/blob/master/docs/tutorial_process_videos.md) and that [DLC behavioral tracking CSV files](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md) have been created.
+All scenarios assume that the videos have been [pre-processed](https://github.com/sgoldenlab/simba/blob/master/docs/tutorial_process_videos.md) and that [DLC](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md), DeepPoseKit[https://github.com/sgoldenlab/simba/blob/master/docs/DeepPoseKit_in_SimBA.md] or SLEAP pose-estimation tracking files have been created.
 
 # **Hypothetical data set**:
 Three days of resident-intruder testing between aggressive CD-1 mice and subordinante C57 intruders. Each day of testing has 10 pairs of mice, for a total of 30 videos recorded across 3 days. Recordings are 3 minutes in duration, in color, at 30fps.
@@ -10,7 +10,7 @@ Three days of resident-intruder testing between aggressive CD-1 mice and subordi
 Also, so that we do not overfit the predictive classifiers to the experimental data, a different set of pilot videos have been recorded of resident-inturder pairings using identical video acquisition parameters. A total of 20 pilot videos were recorded.
 
 # **Scenario 1**: From scratch...
-In this series of Scenarios, you have the above pilot videos and DLC tracking data, the experimental videos and DLC tracking data, and SimBA. All videos have been pre-processed and DLC tracked. You now would like to generate a new predictive classifier for "Behavior that Will Get a Nature Paper (Behavior BtWGaNP)". In this first Scenario, we will use the pilot data to generate the classifier for behavior BtWGaNP. In later scenario tutorials, we will use this predictive classifier to classify behaviours for Day 1 of the experiment ([Scenario 2](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario2.md), add behavioural data with the goal of improving the behavioral classifier ([Scenario 3](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario3.md), and use the predictive classifier to classify behaviour BtWGaNP for Day 2 of the experiment ([Scenario 4](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario4.md)
+In this series of Scenarios, you have the above pilot videos and DLC tracking data, the experimental videos and DLC tracking data, and SimBA. All videos have been pre-processed and DLC tracked. You now would like to generate a new predictive classifier for "Behavior that Will Get a Nature Paper (Behavior BtWGaNP)". In this first Scenario, we will use the pilot data to generate the classifier for behavior BtWGaNP. In later scenario tutorials, we will use this predictive classifier to classify BtWGaNP behaviours for Day 1 of the experiment ([Scenario 2](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario2.md), add behavioural data with the goal of improving the behavioral classifier ([Scenario 3](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario3.md), and use the predictive classifier to classify behaviour BtWGaNP for Day 2 of the experiment ([Scenario 4](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario4.md)). 
 
 ### Pipeline breakdown:
 For processing datasets, the pipeline is split into a few sections. These sections are listed below along with their corresponding functions:
@@ -49,7 +49,7 @@ In this step you create your main project folder, which will then auto-populate 
 
 1. In the main SimBA window, click on `File` and and `Create a new project`. The following windows will pop up.
 
-![](/images/createproject.PNG "createproject")
+![](/images/Create_project_1.PNG "createproject")
 
 2. Navigate to the `[ Generate project config ]` tab. Under **General Settings**, specify a `Project Path` which is the directory that will contain your main project folder.
 
@@ -64,14 +64,17 @@ In this step you create your main project folder, which will then auto-populate 
   <img width="385" height="106" src="https://github.com/sgoldenlab/simba/blob/master/images/classifier1.PNG">
 </p>
 
-6. The sub-menu `Animal Settings` is the number of animals and body parts that that the pose estimation tracking data contains. The default for **SimBA** is 2 animals and 16 body parts (`2 animals, 16bp`). There are a few other - **yet not validaded** - options, accessible in the dropdown menu. This selection is the annotation configuration you should have previously used when labelling images in DeepLabCut or DeepPoseKit - see the tutorial for **[Pose estimation body-part labelling](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling)** for more information. 
+6. The sub-menu `Animal Settings - # config` is used to specify the number of animals and body parts that that the pose estimation tracking data contains. The default for **SimBA** is 2 animals and 16 body parts (`2 animals, 16bp`). There are a few other - **yet not validaded** - options, accessible in the dropdown menu. This selection is the annotation configuration you should have previously used when labelling images in DeepLabCut or DeepPoseKit - see the tutorial for **[Pose estimation body-part labelling](https://github.com/sgoldenlab/simba/blob/master/docs/Tutorial_DLC.md#pose-estimation-body-part-labelling)** for more information.
 
-*>Note:* If you want to use a different body-part configuration that is not shown in the drop-down menu - go tho the tutorial for creating [user-defined pose-configurations](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Pose_config.md) in SimBA
+The second drop-down in the `Animal Settings` menu is the `Type of Tracking` menu. In the current scenario we will leave this at the default `Classical tracking`. `Classical tracking` is used when your videos contain one animal, or two animals that are clearly (by eye) discriminable, such as a white and a black coated animal. A second option in the `Type of Tracking` dropdown menu is `Multi tracking`. Select the `Multi tracking` option from the `Type of Tracking` dropdown menu *only when* the animals in your protocol are not discriminabl by eye and you have used newer pose-estimation tools to perform your animal tracking. These newer tools include multi-animal DeepLabCut [DLC version >=2.2b5](https://github.com/DeepLabCut/DeepLabCut/releases/tag/v2.2b5) and [SLEAP](https://sleap.ai/). In this tutorial we will use `Classical tracking`. If you have multi-animal tracking data from [DeepLabCut >=2.2b5(https://github.com/DeepLabCut/DeepLabCut/releases/tag/v2.2b5)] or [SLEAP](https://sleap.ai/), then branch off to the seperate tutorial to learn how to import this data into SimBA. 
+
+*>Note:* If you want to use a different body-part configuration that is not shown in the drop-down menu - go tho the tutorial for creating [user-defined pose-configurations](https://github.com/sgoldenlab/simba/blob/simba_JJ_branch/docs/Pose_config.md) in SimBA. 
 
 7. Click on `Generate Project Config` to generate your project. The project folder will be located in the specified `Project Path`. The Project will remain open, and the main console will report that the project has been created.
 
 ### Step 2: Import videos into project folder
-In general, you can choose to import either one or multiple videos. The imported videos are used for visualizing predictions and standardizing distances across videos by calculating metric distances from pixel distances. 
+
+In general, you can choose to import either one or multiple videos. The imported videos are used for visualizing predictions, standardizing distances across videos by calculating metric distances from pixel distances, and annotating behaviours for supervised machine learning classifiers.  
 
 In this current Scenario 1, we now want to import the 20 pilot videos that we will use to train the classifier for Behavior BtWGaNP. 
 
@@ -91,16 +94,20 @@ In this step, you will import your pose-estimation tracking data from DeepLabCut
 
 >*Note*: DLC outputs CSV files with exceptionally long file names. We have included a function that will automatically copy the DLC CSV files, remove the excess DLC notations from the filename, and paste the new CSV files within the SimBA project. The new CSV will now have the same name as the corresponding video. The original DLC output CSV will still be present in its original folder.
 
-![](/images/importcsv.PNG "importcsv")
+![](/images/Create_project_2.PNG "importcsv")
 
 #### To import multiple DLC csv files
-1. Navigate to the `[ Import tracking data ]` tab. Under the `Import multiple csv files` heading, click on `Browse Folder` to select the folder that contains the CSV files that you wish to import into your project.
+
+1. Navigate to the `[ Import tracking data ]` tab. The first dropdown menu specify your file-type. In this tutorial we are importing CSV files from DLC and we will leave this at the default (**CSV (DLC/DeepPoseKit)**). If you have pose-estimation data in alternative file-formats, for example from multi-animal DLC or SLEAP, then please see the seperate SimBA  multi-animal tutorial for how to import this data. 
+
+Under the `Import multiple csv files` heading, click on `Browse Folder` to select the folder that contains the CSV files that you wish to import into your project.
+
 2. Click on `Import csv to project folder`. 
 
 >*Note*: SimBA also provides the ability to import single videos and their corressponding CSV files. For more information, click [here](https://github.com/sgoldenlab/simba/blob/master/docs/tutorial.md#part-1-create-a-new-project-1). This method is not used in Scenario 1.
 
 ### Step 4: Extract frames into project folder
-This step will extract all the frames from every pilot video that is imported into the project following [**Step 2**](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#step-2-import-videos-into-project-folder). The frames are used for behavioral labeling when creating classifiers, and for visualizing the classification results. 
+This step will extract all the frames from every pilot video that is imported into the project following [**Step 2**](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario1.md#step-2-import-videos-into-project-folder). The frames are used for behavioral labeling when creating classifiers.
 
 >*Note*: Splitting videos up into frames can take time if you have a lot of high resolution videos at high frame rates. The frames can also take up a lot of hard drive space. This is a good point to grab a coffee, or perhaps the latest edition of Machine Intelligence Daily. Once the step is completed, close the `Project Configuration` window. The main console will remain open and report when the process is complete. 
 
@@ -124,9 +131,10 @@ In this step you will load the *project_config.ini* file that was created.
 In this image, you can see the `Desktop` is my selected working directory, `tutorial` is my project name, and the last two sections of the folder path is always going to be `project_folder/project_config.ini`.
 
 ### Step 2 (Optional step) : Import more DLC Tracking Data or videos
-In this step, you can choose to import more pose estimation data from DeepLabCut in CSV file format and/or more videos. If this isn't relevant then you can skip this step. This is relevant for for [Scenario 4](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario4.md#part-2-load-the-project-and-import-your-new-data). However, this is not relevant for the current Scenaro 1, so please skip to Step 3 (but remain aware you can do this if needed later).
 
-![](/images/importdlc.PNG "importdlc")
+In this step, you can choose to import more pose estimation data and/or more videos. You can only archive analysed files, define new classifiers, and remove previously defined classifiers.  If this isn't relevant then you can skip this step. This is however relevant for [Scenario 4](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario4.md#part-2-load-the-project-and-import-your-new-data) and you can read more about these options in the [Scenario 4 tutorial](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario4.md#part-2-load-the-project-and-import-your-new-data). However, this is not relevant for the current Scenaro 1, so please skip to Step 3 (but remain aware you can do this if needed later).
+
+![](/images/Create_project_3.PNG "importdlc")
 
 1. Click on the `[ Further imports (data/video/frames) ]` tab. From here you can import more data or videos into the project folder. The imported .csv files will be placed in the `project_folder/csv/input` directory, and the imported videos will be placed in the `project_folder/videos` directory. 
 
@@ -134,8 +142,14 @@ In this step, you can choose to import more pose estimation data from DeepLabCut
 
 3. If you already have existing frames of the videos in the project folder, you can import the folder that contains the frames into the project. Under the **Import frame folders** heading, click on `Browse Folder` to choose the folder thar contains the frames, and click on `Import frames`. The frames will be imported into the `project_folder/frames/input` folder. 
 
+4. If you would like to *add* a new classifier to the current project, type the name of the new classifier in the `Classifier` entry box in the `Add new classifier(s)` sub-menu. 
+
+5. If you would like to *remove* a previously defined classifier from the current project, click on `Choose a classifier to remove` in the `Remove existing classifiers(s)` submenu. Once clicked, a window will appear with a dropdown menu where you select the classifier you wish to remove from the current project. 
+
+6. Once you have analyzed your videos, and/or used videos to create classifiers in SimBA  (see [Scenario 4](https://github.com/sgoldenlab/simba/blob/master/docs/Scenario4.md#part-2-load-the-project-and-import-your-new-data)), you may want to archive your analyzed files. Use the `Archive processed files` menu to enter a folder name for your analyzed files and click on `Archive` to move your analyzed files into this folder. 
+
 ### Step 3: Set video parameters
-In this step, you can customize the meta parameters for each of your videos (fps, resolution, metric distances) and provide additional custom video information (Animal ID, group etc). This can be very helpful when analyzing data later on. Are there any groups, conditions, days, treatments, etc, that will make your analysis easier? Note that if youd like to change any of these parameters, you can do so with the SimBA [video pre-processing tools](https://github.com/sgoldenlab/simba/blob/master/docs/tutorial_process_videos.md). Note that the video pre-processing should be performed prior to analyzing the videos through DeepLabCut. 
+In this step, you can customize the meta parameters for each of your videos (fps, resolution, metric distances) and provide additional custom video information (Animal ID, group etc). This can be very helpful when analyzing data later on. Are there any groups, conditions, days, treatments, etc, that will make your analysis easier? Note that if youd like to change any of these parameters, you can do so with the SimBA [video pre-processing tools](https://github.com/sgoldenlab/simba/blob/master/docs/tutorial_process_videos.md). Note that the video pre-processing should be performed prior to analyzing the videos through DeepLabCut, SLEAP, or DeepPoseKit. 
 
 Importantly, in these menues, you also set the **pixels per millimeter** for all of your videos. You will be using a tool that requires the known distance between two points (e.g., the cage width or the cage height) in order to calculate **pixels per millimeter**. We calculate this measure in each video so that we can standardize variables in metric units, and no longer become bound by working with pixel location data. This means that it does not matter if your camera moved slighly across different video recording sessions. 
 
@@ -179,6 +193,10 @@ Importantly, in these menues, you also set the **pixels per millimeter** for all
 
 10. Repeat the steps for every video in the table, and once it is done, click on `Save Data`. This will update the CSV file named **video_info.csv** in `/project_folder/log` directory that contains your video meta data. 
 
+> *Note:* If you have a a very large amount of videos then this process (Step 10 above) can become time-consuming. If you are confident that your camera moved **minimally** across recordings, and that the `Pixels/mm` therefore is near-identical across videos, then SimBA has the option of applying the `Pixels/mm` created for the first video in the table, on all other videos in the table. To proceed with this, click on the red `Duplicate index 1 pixel/mm (CAUTION!)` button. 
+
+![](/images/Create_project_4.PNG "project4_dup.PNG")
+
 11. You can also chose to add further columns to the meta data file (e.g., AnimalID or experimental group) by clicking on the `Add Column` button. This information will be saved in additional columns to your **video_info.csv** file.
 
 ### Step 4: Outlier Correction
@@ -208,6 +226,9 @@ Body parts flagged as movement or location outliers will be re-placed in their l
 4. Chose to calculate the *median or mean* Euclidian distance in millimeters between the two body parts at the bottom of the `Settings` window and click on `Confirm Config`. 
 
 5. Click to run the outlier correction. You can follow the progress in the main SimBA window. Once complete, two new CSV log files will appear in the `/project_folder/log` folder. These two files contain the number of body parts corrected following the two outlier correction methods for each video in the project. The files will look similar to the worksheets in [this Microsoft Excel file](https://github.com/sgoldenlab/simba/blob/master/misc/Outlier_corrections.xlsx). 
+
+> *Note:* In some scenarios, SimBA users are confident that the pose-estimation is perfected, no gross innacuracies are present, and the user may want to completely skip the use of SimBAs outlier correction tools. To do this, click on the red `Skip outlier correction (CAUTION)` button. This will format the 
+
 
 ### Step 5: Extract Features
 Based on the coordinates of body parts in each frame - and the frame rate and the pixels per millimeter values - the feature extraction step calculates a larger set of features used for behavioral classification. Features are values such as metric distances between body parts, angles, areas, movement, paths, and their deviations and rank in individual frames and across rolling windows. This feature set extracted from the tracking data is what we are going to use to predict behavior BtWGaNP, using the relationships between features, rather than the pose estimation data itself. 
